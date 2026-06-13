@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Online PPDB - Pesantren Darussalam</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased font-sans">
+
+    <!-- Top Bar -->
+    <div class="bg-emerald-900 text-white text-xs py-2 px-4 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-4">
+                <span><i class="fa-solid fa-phone mr-1 text-emerald-400"></i> +62 812-3456-7890</span>
+                <span><i class="fa-solid fa-envelope mr-1 text-emerald-400"></i> ppdb@pesandren-dummy.sch.id</span>
+            </div>
+            <div class="text-xs text-emerald-300 font-semibold bg-emerald-950/60 px-2.5 py-1 rounded border border-emerald-800/40 animate-pulse">
+                <i class="fa-solid fa-circle text-[8px] mr-1 text-green-400"></i> Sistem PPDB Aktif
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-emerald-800 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-inner">
+                    <i class="fa-solid fa-mosque"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg text-emerald-900 leading-tight tracking-wide">PESANTREN DARUSSALAM</h1>
+                    <p class="text-xs text-gray-500 font-medium tracking-widest uppercase">Penerimaan Santri Baru 2026/2027</p>
+                </div>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-6 font-medium text-sm text-gray-600">
+                <a href="index.html" class="hover:text-emerald-700 transition">Beranda</a>
+                <a href="profile.html" class="hover:text-emerald-700 transition">Profil</a>
+                <a href="pendidikan.html" class="hover:text-emerald-700 transition">Pendidikan</a>
+                <a href="berita.html" class="hover:text-emerald-700 transition">Berita</a>
+                <a href="kontak.html" class="hover:text-emerald-700 transition">Kontak</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Formulir Pendaftaran PPDB Utama -->
+    <section class="py-12 px-4 bg-gray-50">
+        <div class="max-w-3xl mx-auto">
+            
+            <!-- Indikator Alur Langkah (Step Indicator Component) -->
+            <div class="mb-10 bg-white rounded-xl border border-gray-100 p-4 shadow-sm flex justify-between items-center text-xs font-semibold relative">
+                <!-- Step 1 -->
+                <div id="stepBadg1" class="flex flex-col sm:flex-row items-center gap-2 text-emerald-800 z-10">
+                    <span id="stepNum1" class="w-7 h-7 rounded-full bg-emerald-700 text-white flex items-center justify-center font-bold shadow-sm">1</span>
+                    <span class="hidden sm:inline">Data Santri</span>
+                </div>
+                <div class="h-0.5 bg-gray-200 grow mx-4 hidden sm:block"></div>
+                <!-- Step 2 -->
+                <div id="stepBadg2" class="flex flex-col sm:flex-row items-center gap-2 text-gray-400 z-10">
+                    <span id="stepNum2" class="w-7 h-7 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center font-bold">2</span>
+                    <span class="hidden sm:inline">Orang Tua/Wali</span>
+                </div>
+                <div class="h-0.5 bg-gray-200 grow mx-4 hidden sm:block"></div>
+                <!-- Step 3 -->
+                <div id="stepBadg3" class="flex flex-col sm:flex-row items-center gap-2 text-gray-400 z-10">
+                    <span id="stepNum3" class="w-7 h-7 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center font-bold">3</span>
+                    <span class="hidden sm:inline">Upload Berkas</span>
+                </div>
+            </div>
+
+            <!-- Kontainer Utama Form -->
+            <form action="#" method="POST" enctype="multipart/form-data" class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                
+                <!-- STEP 1: DATA CALON SANTRI -->
+                <div id="formSection1" class="p-6 md:p-8 space-y-5">
+                    <div class="border-b border-gray-100 pb-3">
+                        <h3 class="text-base font-bold text-gray-900 tracking-tight">Langkah 1: Identitas Calon Santri</h3>
+                        <p class="text-xs text-gray-400 mt-0.5">Isi data pribadi calon santri sesuai dengan akta kelahiran asli.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1.5">Nama Lengkap Calon Santri *</label>
+                            <input type="text" required placeholder="Contoh: Muhammad Akhyar" class="w-full text-xs border border-gray-200 rounded-lg p-3 bg-gray-50 focus:outline-none focus:border-emerald-600 focus:bg-white transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1.5">Jenjang Pendidikan Pilihan *</label>
+                            <select required class="w-full text-xs border border-gray-200 rounded-lg p-3 bg-gray-50 focus:outline-none focus:border-emerald-600 focus:bg-white transition">
+                                <option value="">-- Pilih Jenjang --</option>
+                                <option value="MTs">Madrasah Tsanawiyah (MTs)</option>
+                                <option value="MA">Madrasah Aliyah (MA)</option>
+                                <option value="Tahfidz">Tahfidzul Qur'an (Unggulan)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1.5">Jenis Kelamin *</label>
+                            <select required class="w-full text-xs border border-gray-200 rounded-lg p-3 bg-gray-50 focus:outline-none focus:border-emerald-600 focus:bg-white transition">
+                                <option value="L">Laki-laki (Santri)</option>
+                                <option value="P">Perempuan (Santriwati)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1.5">Tempat Lahir *</label>
+                            <input type="text" required placeholder="Contoh: Makassar" class="w-full text-xs border border-gray-200 rounded-lg p-3 bg-gray-50 focus:outline-none focus:border-emerald-600 focus:bg-white transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1.5">Tanggal Lahir *</label>
+                            <input type="date" required class="w-full text-xs border border-gray-200 rounded-lg p-3 bg-gray-50 focus:outline-none focus:border-emerald-600 focus:bg-white transition">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1.5">NISN (Nomor Induk Siswa Nasional)</label>
+                        <input type="number" placeholder="10 Digit angka NISN asal sekolah" class="w-full text-xs border border-gray-200 rounded-lg p-3 bg-gray-50 focus:outline-none focus:border-emerald-600 focus:bg-white transition">
+                    </div>
+                </div>
+
+                <!-- STEP 2: DATA ORANG TUA / WALI -->
+                <div id="formSection2" class="p-6 md:p-8 space-y-5 hidden">
+                    <div class="border-b border-gray-100 pb-3">
+                        <h3 class="text-base font-bold text-gray-900 tracking-tight">Langkah 2: Data Orang Tua / Wali</h3>
+                        <p class="text-xs text-gray-400 mt-0.5">Informasi kontak guna pengiriman berkas dan koordinasi wawancara.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1.5">Nama Lengkap Ayah Kandung *</label>
+                            <input type="text" id="inputAyah" placeholder="Nama ayah sesuai KK" class="w-full text-xs border border-gray-200 rounded-lg p-3 bg-gray-50 focus:outline-none focus:border-emerald-600 focus:bg-white transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1.5">Nama Lengkap Ibu Kandung *</label>
+                            <input type="text" id="inputIbu" placeholder="Nama ibu sesuai KK" class="w-full text-xs border border-gray-200 rounded-lg p-3 bg-gray-50 focus:outline-none focus:border-emerald-600 focus:bg-white transition">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1.5">Nomor WhatsApp Aktif (Utama) *</label>
+                            <input type="tel" id="inputWA" placeholder="Contoh: 081234567xxx" class="w-full text-xs border border-gray-200 rounded-lg p-3 bg-gray-50 focus:outline-none focus:border-emerald-600 focus:bg-white transition">
+                            <span class="text-[10px] text-gray-400 block mt-1">Sistem akan mengirim notifikasi bukti pendaftaran otomatis ke nomor ini.</span>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1.5">Pekerjaan Utama Wali</label>
+                            <input type="text" placeholder="PNS / Swasta / Wiraswasta" class="w-full text-xs border border-gray-200 rounded-lg p-3 bg-gray-50 focus:outline-none focus:border-emerald-600 focus:bg-white transition">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 3: UPLOAD BERKAS -->
+                <div id="formSection3" class="p-6 md:p-8 space-y-5 hidden">
+                    <div class="border-b border-gray-100 pb-3">
+                        <h3 class="text-base font-bold text-gray-900 tracking-tight">Langkah 3: Unggah Berkas Persyaratan</h3>
+                        <p class="text-xs text-gray-400 mt-0.5">Format file diperbolehkan: .JPG, .PNG, atau .PDF dengan kapasitas maksimal 2MB per berkas.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 items-center border-b border-gray-100 pb-3">
+                            <label class="block text-xs font-semibold text-gray-700 mb-1 sm:mb-0">Scan Kartu Keluarga (KK) *</label>
+                            <div class="sm:col-span-2">
+                                <input type="file" id="fileKK" class="text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100 cursor-pointer">
+                            </div>
+                        </div>
+
+                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 items-center border-b border-gray-100 pb-3">
+                            <label class="block text-xs font-semibold text-gray-700 mb-1 sm:mb-0">Scan Akta Kelahiran *</label>
+                            <div class="sm:col-span-2">
+                                <input type="file" id="fileAkta" class="text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100 cursor-pointer">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Syarat Centang Konfirmasi Keaslian -->
+                    <div class="p-4 bg-amber-50 border border-amber-100 rounded-xl text-xs text-amber-900 flex gap-3 mt-4">
+                        <input type="checkbox" id="checkValid" class="mt-0.5 shrink-0 rounded text-emerald-700 focus:ring-emerald-600">
+                        <label for="checkValid" class="leading-relaxed">Saya menyatakan dengan sebenar-benarnya bahwa seluruh data yang diinput dan berkas yang diunggah adalah sah, benar, dan sesuai dengan dokumen asli yang dikeluarkan pihak berwenang.</label>
+                    </div>
+                </div>
+
+                <!-- PANEL TOMBOL NAVIGASI BAWAH (Nav Bar Form) -->
+                <div class="bg-gray-50 border-t border-gray-100 px-6 py-4 flex justify-between items-center">
+                    <!-- Tombol Kembali -->
+                    <button type="button" id="btnBack" onclick="navigateStep(-1)" class="invisible bg-white hover:bg-gray-100 text-gray-700 text-xs font-semibold px-4 py-2.5 rounded border border-gray-200 transition focus:outline-none shadow-sm">
+                        <i class="fa-solid fa-arrow-left mr-1"></i> Kembali
+                    </button>
+
+                    <!-- Tombol Lanjut / Submit -->
+                    <button type="button" id="btnNext" onclick="navigateStep(1)" class="bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold px-6 py-2.5 rounded shadow transition focus:outline-none">
+                        Lanjutkan <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer Singkat Khusus PPDB -->
+    <footer class="bg-gray-900 text-gray-500 text-[11px] py-6 text-center border-t border-gray-800">
+        <p>&copy; 2026 Panitia PPDB Pesantren Darussalam Makassar. Semua data terenkripsi aman.</p>
+        <p class="mt-1 text-gray-600">Powered by <a href="#" class="text-emerald-700 font-semibold hover:underline">lagingoding.com</a></p>
+    </footer>
+
+    <!-- INTERAKSI JAVASCRIPT: LOGIKA MULTI-STEP -->
+    <script>
+        let currentStep = 1;
+
+        function navigateStep(direction) {
+            // Validasi sederhana sebelum lanjut ke langkah 2
+            if (direction === 1 && currentStep === 1) {
+                // Di Laravel, validasi ini ditangani otomatis oleh Livewire atau Request Validation
+                // Di sini kita izinkan lewat langsung demi prototipe frontend
+            }
+
+            // Tambahkan atau kurangi langkah aktif
+            currentStep += direction;
+
+            // Pastikan langkah terkunci di batas 1-3
+            if (currentStep < 1) currentStep = 1;
+            if (currentStep > 3) currentStep = 3;
+
+            // Render komponen visual berdasarkan langkah aktif
+            updateFormUIVisual();
+        }
+
+        function updateFormUIVisual() {
+            // Sembunyikan semua seksi halaman utama form
+            document.getElementById('formSection1').classList.add('hidden');
+            document.getElementById('formSection2').classList.add('hidden');
+            document.getElementById('formSection3').classList.add('hidden');
+
+            // Tampilkan seksi form yang terpilih
+            document.getElementById('formSection' + currentStep).classList.remove('hidden');
+
+            // Set visibilitas Tombol Kembali (Back Button)
+            const btnBack = document.getElementById('btnBack');
+            if (currentStep === 1) {
+                btnBack.classList.add('invisible');
+            } else {
+                btnBack.classList.remove('invisible');
+            }
+
+            // Ganti tipe tombol Lanjut di langkah terakhir menjadi tombol Submit Kirim
+            const btnNext = document.getElementById('btnNext');
+            if (currentStep === 3) {
+                btnNext.innerHTML = '<i class="fa-regular fa-circle-check mr-1"></i> Kirim Pendaftaran';
+                btnNext.setAttribute('type', 'submit');
+                // Mengubah fungsi klik default agar form bisa disubmit di akhir
+                btnNext.onclick = null; 
+            } else {
+                btnNext.innerHTML = 'Lanjutkan <i class="fa-solid fa-arrow-right ml-1"></i>';
+                btnNext.setAttribute('type', 'button');
+                btnNext.onclick = function() { navigateStep(1); };
+            }
+
+            // Sinkronisasi warna komponen indikator atas (Step Indicator)
+            for (let i = 1; i <= 3; i++) {
+                const badge = document.getElementById('stepBadg' + i);
+                const num = document.getElementById('stepNum' + i);
+                
+                if (i <= currentStep) {
+                    badge.classList.remove('text-gray-400');
+                    badge.classList.add('text-emerald-800');
+                    num.classList.remove('bg-gray-200', 'text-gray-600');
+                    num.classList.add('bg-emerald-700', 'text-white');
+                } else {
+                    badge.classList.remove('text-emerald-800');
+                    badge.classList.add('text-gray-400');
+                    num.classList.remove('bg-emerald-700', 'text-white');
+                    num.classList.add('bg-gray-200', 'text-gray-600');
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

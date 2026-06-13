@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Utama - Sistem Manajemen Pesantren</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-[#f8fafc] text-slate-800 antialiased font-sans flex min-h-screen">
+
+    <!-- 1. SIDEBAR NAVIGATION (Panel Navigasi Samping) -->
+    <aside class="w-66 bg-white text-slate-600 shrink-0 hidden md:flex flex-col justify-between border-r border-slate-200/80 shadow-sm">
+        <div>
+            <!-- Header Brand -->
+            <div class="px-6 py-5 flex items-center gap-3 border-b border-slate-100 bg-slate-50/50">
+                <div class="w-9 h-9 bg-slate-900 text-white rounded-xl flex items-center justify-center font-bold shadow-sm">
+                    <i class="fa-solid fa-cube text-sm"></i>
+                </div>
+                <div>
+                    <h2 class="text-slate-900 font-black text-sm tracking-tight leading-none">MA'HAD CORE</h2>
+                    <p class="text-[9px] text-indigo-600 font-bold tracking-widest uppercase mt-1">Sistem Manajemen</p>
+                </div>
+            </div>
+
+            <!-- Menu Navigasi (Tab Ringkasan Aktif) -->
+            <nav class="px-4 py-6 space-y-1 text-xs font-bold">
+                <span class="px-3 text-[10px] text-slate-400 uppercase tracking-widest block mb-2">Ringkasan</span>
+                <!-- Menu ini yang sedang aktif -->
+                <a href="#" class="flex items-center gap-3 bg-indigo-50 text-indigo-950 px-3 py-2.5 rounded-xl transition border border-indigo-100">
+                    <i class="fa-solid fa-chart-pie text-sm text-indigo-600"></i> Ringkasan Dasbor
+                </a>
+
+                <span class="px-3 text-[10px] text-slate-400 uppercase tracking-widest block pt-5 mb-2">Operasional Pondok</span>
+                <a href="#" class="flex items-center gap-3 hover:bg-slate-50 text-slate-700 px-3 py-2.5 rounded-xl transition">
+                    <i class="fa-solid fa-graduation-cap text-sm text-slate-400"></i> Pendaftar PPDB
+                </a>
+                <a href="#" class="flex items-center gap-3 hover:bg-slate-50 text-slate-700 px-3 py-2.5 rounded-xl transition">
+                    <i class="fa-regular fa-newspaper text-sm text-slate-400"></i> Berita & Kegiatan
+                </a>
+                <a href="#" class="flex items-center gap-3 hover:bg-slate-50 text-slate-700 px-3 py-2.5 rounded-xl transition">
+                    <i class="fa-regular fa-images text-sm text-slate-400"></i> Galeri Media
+                </a>
+                <a href="#" class="flex items-center gap-3 hover:bg-slate-50 text-slate-700 px-3 py-2.5 rounded-xl transition">
+                    <i class="fa-regular fa-building text-sm text-slate-400"></i> Sarana Fasilitas
+                </a>
+
+                <!-- MENU KHUSUS KONFIGURASI SUPERADMIN -->
+                <span class="px-3 text-[10px] text-indigo-600 uppercase tracking-widest block pt-6 mb-2 border-t border-slate-100 mt-4">Pusat Superadmin</span>
+                <a href="#" class="flex items-center gap-3 hover:bg-slate-50 text-slate-700 px-3 py-2.5 rounded-xl transition">
+                    <i class="fa-solid fa-palette text-sm text-slate-400"></i> Pengaturan Tema & Fitur
+                </a>
+            </nav>
+        </div>
+
+        <!-- Akun Pengguna Aktif di Bagian Bawah -->
+        <div class="p-4 border-t border-slate-100 bg-slate-50/40 flex items-center justify-between text-xs font-bold">
+            <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center text-xs">AD</div>
+                <div>
+                    <h5 class="text-slate-900 leading-none font-black">Andi Admin</h5>
+                    <span class="text-[9px] text-slate-400 block mt-0.5">Administrator</span>
+                </div>
+            </div>
+            <a href="#" class="text-slate-400 hover:text-red-500 p-1 transition"><i class="fa-solid fa-power-off text-sm"></i></a>
+        </div>
+    </aside>
+
+    <!-- 2. MAIN CONTENT AREA (Kanan) -->
+    <main class="grow flex flex-col min-w-0">
+        
+        <!-- Top Bar Header -->
+        <header class="bg-white border-b border-slate-200/60 px-6 py-4 flex justify-between items-center sticky top-0 z-30 shadow-sm shadow-slate-100/50">
+            <div class="flex items-center gap-3">
+                <button class="md:hidden text-slate-600"><i class="fa-solid fa-bars text-lg"></i></button>
+                <h3 class="text-slate-900 font-black text-sm md:text-base tracking-tight">Ringkasan Sistem Informasi</h3>
+            </div>
+            <div class="flex items-center gap-4 text-xs font-bold text-slate-500">
+                <span><i class="fa-regular fa-calendar mr-1.5 text-indigo-600"></i> Minggu, 14 Juni 2026</span>
+                <span class="text-slate-200">|</span>
+                <a href="../index.html" target="_blank" class="bg-white hover:bg-slate-50 text-slate-800 px-3 py-2 rounded-xl border border-slate-200 shadow-sm flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-indigo-600"></i> Tinjau Situs
+                </a>
+            </div>
+        </header>
+
+        <!-- Area Isi Konten Utama -->
+        <div class="p-6 space-y-6 overflow-y-auto grow">
+            
+            <!-- KARTU STATISTIK DATA CEPAT -->
+            <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <!-- Pendaftar Baru -->
+                <div class="bg-white border border-slate-200/80 p-5 rounded-2xl shadow-sm flex justify-between items-center">
+                    <div>
+                        <span class="text-[10px] font-bold uppercase text-slate-400 tracking-wider">Total PPDB Masuk</span>
+                        <h3 class="text-2xl font-black text-slate-900 mt-1">142 <span class="text-xs text-slate-400 font-normal">Siswa</span></h3>
+                    </div>
+                    <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center text-sm shadow-inner"><i class="fa-solid fa-user-plus"></i></div>
+                </div>
+                <!-- Berkas Review -->
+                <div class="bg-white border border-slate-200/80 p-5 rounded-2xl shadow-sm flex justify-between items-center">
+                    <div>
+                        <span class="text-[10px] font-bold uppercase text-slate-400 tracking-wider">Belum Diverifikasi</span>
+                        <h3 class="text-2xl font-black text-amber-600 mt-1">28 <span class="text-xs text-slate-400 font-normal">Berkas</span></h3>
+                    </div>
+                    <div class="w-10 h-10 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center text-sm shadow-inner"><i class="fa-regular fa-clock"></i></div>
+                </div>
+                <!-- Berita Aktif -->
+                <div class="bg-white border border-slate-200/80 p-5 rounded-2xl shadow-sm flex justify-between items-center">
+                    <div>
+                        <span class="text-[10px] font-bold uppercase text-slate-400 tracking-wider">Artikel Berita</span>
+                        <h3 class="text-2xl font-black text-slate-900 mt-1">45 <span class="text-xs text-slate-400 font-normal">Warta</span></h3>
+                    </div>
+                    <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-sm shadow-inner"><i class="fa-regular fa-file-lines"></i></div>
+                </div>
+                <!-- Sarana Kampus -->
+                <div class="bg-white border border-slate-200/80 p-5 rounded-2xl shadow-sm flex justify-between items-center">
+                    <div>
+                        <span class="text-[10px] font-bold uppercase text-slate-400 tracking-wider">Fasilitas Terdata</span>
+                        <h3 class="text-2xl font-black text-slate-900 mt-1">12 <span class="text-xs text-slate-400 font-normal">Aset</span></h3>
+                    </div>
+                    <div class="w-10 h-10 bg-slate-50 text-slate-700 rounded-xl flex items-center justify-center text-sm shadow-inner"><i class="fa-regular fa-building"></i></div>
+                </div>
+            </section>
+
+            <!-- DIAGRAM / GRID UTAMA KELOLA DATA HETEROGEN -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                
+                <!-- TABEL KIRI: DAFTAR PENDAFTAR PPDB TERBARU (8 Kolom) -->
+                <div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm lg:col-span-8 space-y-4">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h4 class="text-sm font-black text-slate-900 tracking-tight">Pendaftaran PPDB Masuk Terbaru</h4>
+                            <p class="text-[11px] text-slate-400 font-normal mt-0.5">Daftar calon santri baru yang baru saja melakukan submit berkas online.</p>
+                        </div>
+                        <a href="#" class="text-[11px] font-bold text-indigo-600 hover:underline">Lihat Semua</a>
+                    </div>
+
+                    <!-- Table Container -->
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs border-collapse">
+                            <thead>
+                                <tr class="border-b border-slate-100 text-slate-400 font-bold bg-slate-50/50">
+                                    <th class="p-3">Nama Santri</th>
+                                    <th class="p-3">Jenjang</th>
+                                    <th class="p-3">Tanggal Daftar</th>
+                                    <th class="p-3 text-right">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-50 font-medium text-slate-700">
+                                <!-- Row 1 -->
+                                <tr class="hover:bg-slate-50/30 transition">
+                                    <td class="p-3 font-bold text-slate-900">Ahmad Baihaqi</td>
+                                    <td class="p-3"><span class="bg-slate-100 text-slate-700 px-2 py-0.5 rounded text-[10px] font-bold">MA</span></td>
+                                    <td class="p-3 text-slate-400">14 Jun 2026</td>
+                                    <td class="p-3 text-right"><span class="bg-amber-50 text-amber-700 border border-amber-100 px-2 py-0.5 rounded text-[10px] font-bold">Menunggu Review</span></td>
+                                </tr>
+                                <!-- Row 2 -->
+                                <tr class="hover:bg-slate-50/30 transition">
+                                    <td class="p-3 font-bold text-slate-900">Siti Aminah</td>
+                                    <td class="p-3"><span class="bg-slate-100 text-slate-700 px-2 py-0.5 rounded text-[10px] font-bold">MTs</span></td>
+                                    <td class="p-3 text-slate-400">13 Jun 2026</td>
+                                    <td class="p-3 text-right"><span class="bg-emerald-50 text-emerald-700 border border-emerald-100 px-2 py-0.5 rounded text-[10px] font-bold">Terverifikasi</span></td>
+                                </tr>
+                                <!-- Row 3 -->
+                                <tr class="hover:bg-slate-50/30 transition">
+                                    <td class="p-3 font-bold text-slate-900">Muhammad Akhyar</td>
+                                    <td class="p-3"><span class="bg-slate-100 text-slate-700 px-2 py-0.5 rounded text-[10px] font-bold">Tahfidz</span></td>
+                                    <td class="p-3 text-slate-400">11 Jun 2026</td>
+                                    <td class="p-3 text-right"><span class="bg-amber-50 text-amber-700 border border-amber-100 px-2 py-0.5 rounded text-[10px] font-bold">Menunggu Review</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- SEKSI KANAN: LOG AKTIVITAS / INFORMASI TEMA AKTIF (4 Kolom) -->
+                <div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm lg:col-span-4 space-y-4">
+                    <div>
+                        <h4 class="text-sm font-black text-slate-900 tracking-tight">Informasi Lingkungan</h4>
+                        <p class="text-[11px] text-slate-400 font-normal mt-0.5">Status dan konfigurasi global yang berjalan.</p>
+                    </div>
+
+                    <!-- List Info Status -->
+                    <div class="space-y-3.5 text-xs font-semibold">
+                        <!-- Item 1: Tema -->
+                        <div class="p-3 rounded-xl border border-slate-100 bg-slate-50/50 flex items-center justify-between">
+                            <div class="flex items-center gap-2.5">
+                                <i class="fa-solid fa-palette text-indigo-600 text-sm"></i>
+                                <span class="text-slate-600">Wajah Tema</span>
+                            </div>
+                            <span class="text-slate-900 font-bold bg-white border border-slate-200 px-2.5 py-1 rounded-lg shadow-sm">Islami Tradisional</span>
+                        </div>
+                        
+                        <!-- Item 2: Lisensi -->
+                        <div class="p-3 rounded-xl border border-slate-100 bg-slate-50/50 flex items-center justify-between">
+                            <div class="flex items-center gap-2.5">
+                                <i class="fa-solid fa-shield-halved text-emerald-600 text-sm"></i>
+                                <span class="text-slate-600">Status Lisensi</span>
+                            </div>
+                            <span class="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded">SaaS Full Pack</span>
+                        </div>
+
+                        <!-- Item 3: Log Aktivitas Singkat -->
+                        <div class="pt-2">
+                            <span class="text-[10px] font-bold uppercase text-slate-400 tracking-wider block mb-2">Aktivitas Terakhir</span>
+                            <div class="space-y-2.5 border-l-2 border-slate-100 pl-3.5 text-[11px] font-medium text-slate-600">
+                                <div>
+                                    <p class="text-slate-900 font-bold">Andi Admin mengubah profil pesantren</p>
+                                    <span class="text-[10px] text-slate-400 block mt-0.5">10 menit yang lalu</span>
+                                </div>
+                                <div>
+                                    <p class="text-slate-900 font-bold">Sistem menerima berkas PPDB baru</p>
+                                    <span class="text-[10px] text-slate-400 block mt-0.5">2 jam yang lalu</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-white border-t border-slate-200/80 px-6 py-4 text-center text-[11px] text-slate-400 font-bold">
+            <p>&copy; 2026 Core Engine Infrastructure SaaS Pesantren. Desain oleh <a href="#" class="text-indigo-600 hover:underline">lagingoding.com</a></p>
+        </footer>
+
+    </main>
+
+</body>
+</html>

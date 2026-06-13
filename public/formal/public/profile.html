@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Lembaga - Pesantren Darussalam</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased font-sans">
+
+    <!-- Top Bar (Sama seperti Beranda) -->
+    <div class="bg-emerald-900 text-white text-xs py-2 px-4 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-4">
+                <span><i class="fa-solid fa-phone mr-1 text-emerald-400"></i> +62 812-3456-7890</span>
+                <span><i class="fa-solid fa-envelope mr-1 text-emerald-400"></i> info@pesandren-dummy.sch.id</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="#" class="hover:text-emerald-300"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="hover:text-emerald-300"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-emerald-300"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-emerald-800 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-inner">
+                    <i class="fa-solid fa-mosque"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg text-emerald-900 leading-tight tracking-wide">PESANTREN DARUSSALAM</h1>
+                    <p class="text-xs text-gray-500 font-medium tracking-widest uppercase">KOTA MAKASSAR</p>
+                </div>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-6 font-medium text-sm text-gray-600">
+                <a href="index.html" class="hover:text-emerald-700 transition">Beranda</a>
+                <a href="#" class="text-emerald-700 font-semibold border-b-2 border-emerald-700 pb-1">Profil</a>
+                <a href="#" class="hover:text-emerald-700 transition">Pendidikan</a>
+                <a href="#" class="hover:text-emerald-700 transition">Fasilitas</a>
+                <a href="#" class="hover:text-emerald-700 transition">Berita</a>
+                <a href="#" class="hover:text-emerald-700 transition">Galeri</a>
+                <a href="#" class="hover:text-emerald-700 transition">Kontak</a>
+                
+                <!-- TOGGLE FITUR: MENU PPDB PREMIUM -->
+                <!-- @if(config('features.ppdb')) -->
+                <a href="#" class="bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded font-semibold text-xs tracking-wider transition uppercase shadow">
+                    Daftar PPDB
+                </a>
+                <!-- @endif -->
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header (Breadcrumb Section) -->
+    <section class="bg-emerald-950 text-white py-12 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1590075865003-e48277adc558')] bg-cover bg-center mix-blend-overlay"></div>
+        <div class="relative max-w-7xl mx-auto text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <h2 class="text-2xl md:text-3xl font-bold tracking-tight">Profil Pesantren</h2>
+                <p class="text-emerald-300 text-xs mt-1">Mengenal lebih dekat sejarah, visi misi, dan kepengurusan ma'had</p>
+            </div>
+            <div class="text-xs text-emerald-400 bg-emerald-900/50 px-4 py-2 rounded border border-emerald-800/60">
+                <a href="index.html" class="hover:text-white transition">Beranda</a> 
+                <span class="mx-2 text-gray-500">/</span> 
+                <span class="text-white">Profil</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sejarah / Tentang Kami -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <div class="lg:col-span-7">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700 block mb-2">Ikhtisar Sejarah</span>
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 tracking-tight">Perjalanan Pesantren Darussalam</h3>
+                <div class="w-12 h-1 bg-emerald-600 mb-6"></div>
+                <div class="space-y-4 text-sm md:text-base text-gray-600 leading-relaxed">
+                    <p>
+                        Pesantren Darussalam didirikan pada tahun 2010 oleh Yayasan Islam Darussalam di atas tanah wakaf seluas 2 hektar di Kota Makassar. Berawal dari sebuah mushola kecil dan beberapa santri mukim, ma'had ini terus berkembang secara konsisten dari tahun ke tahun menjadi lembaga pendidikan Islam yang terintegrasi.
+                    </p>
+                    <p>
+                        Dalam perkembangannya, kami memadukan khazanah keilmuan Islam tradisional (*Kitab Kuning*) dengan kurikulum nasional. Fokus utama kami adalah melahirkan santri yang tangguh secara spiritual, mandiri secara ekonomi, dan siap berkontribusi nyata bagi masyarakat luas di era globalisasi ini.
+                    </p>
+                </div>
+            </div>
+            <div class="lg:col-span-5 grid grid-cols-2 gap-4">
+                <div class="bg-gray-100 rounded-lg h-48 flex items-center justify-center text-gray-400 border border-gray-200">
+                    <i class="fa-regular fa-image text-3xl"></i>
+                </div>
+                <div class="bg-gray-100 rounded-lg h-48 flex items-center justify-center text-gray-400 border border-gray-200 mt-6">
+                    <i class="fa-regular fa-image text-3xl"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visi & Misi -->
+    <section class="py-16 px-4 bg-gray-50 border-t border-b border-gray-100">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700 block mb-1">Arah Langkah</span>
+                <h3 class="text-2xl font-bold text-gray-900 tracking-tight">Visi & Misi</h3>
+                <div class="w-12 h-1 bg-emerald-600 mx-auto mt-3"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
+                <!-- Visi -->
+                <div class="md:col-span-5 bg-emerald-900 text-white p-8 rounded-xl shadow-md flex flex-col justify-center">
+                    <span class="text-xs font-bold tracking-widest uppercase text-emerald-400 mb-2">Visi</span>
+                    <p class="text-base md:text-lg font-medium leading-relaxed italic">
+                        "Terwujudnya lembaga pendidikan Islam model yang unggul dalam melahirkan generasi bertakwa, menguasai ilmu syar'i, berkepribadian mulia, serta tanggap terhadap tuntutan zaman."
+                    </p>
+                </div>
+                <!-- Misi -->
+                <div class="md:col-span-7 bg-white p-8 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-center">
+                    <span class="text-xs font-bold tracking-widest uppercase text-emerald-700 mb-4 block">Misi Pesantren</span>
+                    <ul class="space-y-3 text-sm text-gray-600">
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-check-to-slot text-emerald-600 mt-1 text-xs shrink-0"></i>
+                            <span>Menyelenggarakan sistem pendidikan kepesantrenan berasrama yang disiplin, aman, dan kondusif untuk menghafal Al-Qur'an.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-check-to-slot text-emerald-600 mt-1 text-xs shrink-0"></i>
+                            <span>Menanamkan pemahaman aqidah yang shahihah dan akhlakul karimah dalam kehidupan sehari-hari.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-check-to-slot text-emerald-600 mt-1 text-xs shrink-0"></i>
+                            <span>Mengembangkan potensi akademik, kepemimpinan, dan kecakapan hidup (*life skills*) para santri secara komprehensif.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Struktur Organisasi -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700 block mb-1">Manajemen Ma'had</span>
+                <h3 class="text-2xl font-bold text-gray-900 tracking-tight">Struktur Organisasi</h3>
+                <div class="w-12 h-1 bg-emerald-600 mx-auto mt-3"></div>
+            </div>
+
+            <!-- Placeholder Bagan Struktur / Gambar -->
+            <div class="max-w-4xl mx-auto bg-gray-50 border-2 border-dashed border-gray-200 rounded-2xl p-8 flex flex-col items-center justify-center text-center h-80 shadow-inner">
+                <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-800 text-2xl mb-4">
+                    <i class="fa-solid fa-sitemap"></i>
+                </div>
+                <h4 class="font-bold text-gray-800 mb-1 text-sm md:text-base">Bagan Struktur Pengurus & Asatidzah</h4>
+                <p class="text-xs text-gray-500 max-w-md">
+                    (Bagan interaktif atau gambar struktur organisasi yang diunggah oleh Admin Pesantren melalui CMS akan tampil secara dinamis di area ini)
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOGGLE FITUR: STATISTIK DIGITAL (Hanya Paket Tertentu) -->
+    <!-- @if(config('features.statistik')) -->
+    <section class="py-12 bg-emerald-900 text-white px-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div class="p-4">
+                <h3 class="text-3xl font-extrabold text-emerald-300">350+</h3>
+                <p class="text-xs text-gray-300 uppercase font-semibold mt-1 tracking-wider">Santri Aktif</p>
+            </div>
+            <div class="p-4">
+                <h3 class="text-3xl font-extrabold text-emerald-300">45+</h3>
+                <p class="text-xs text-gray-300 uppercase font-semibold mt-1 tracking-wider">Asatidzah</p>
+            </div>
+            <div class="p-4">
+                <h3 class="text-3xl font-extrabold text-emerald-300">12</h3>
+                <p class="text-xs text-gray-300 uppercase font-semibold mt-1 tracking-wider">Fasilitas Utama</p>
+            </div>
+            <div class="p-4">
+                <h3 class="text-3xl font-extrabold text-emerald-300">1,200+</h3>
+                <p class="text-xs text-gray-300 uppercase font-semibold mt-1 tracking-wider">Alumni Tersebar</p>
+            </div>
+        </div>
+    </section>
+    <!-- @endif -->
+
+    <!-- Footer (Sama dengan Beranda) -->
+    <footer class="bg-gray-900 text-gray-400 text-xs py-12 px-4 border-t-4 border-emerald-800">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div>
+                <h4 class="text-white font-bold text-sm mb-4 tracking-wider uppercase">Tentang Kami</h4>
+                <p class="leading-relaxed mb-4 text-gray-400">
+                    Pesantren Darussalam berdedikasi tinggi menyelenggarakan sistem pengajaran Islam transparan dan bermutu tinggi di wilayah Indonesia Timur.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-sm mb-4 tracking-wider uppercase">Tautan Cepat</h4>
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="hover:text-white transition">Beranda</a></li>
+                    <li><a href="#" class="hover:text-white transition">Struktur Pengurus</a></li>
+                    <li><a href="#" class="hover:text-white transition">Peta Lokasi Google Maps</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-sm mb-4 tracking-wider uppercase">Sekretariat</h4>
+                <p class="leading-relaxed mb-2">
+                    <i class="fa-solid fa-location-dot mr-1.5 text-emerald-500"></i> Jl. Pendidikan No. 45, Kecamatan Tamalanrea, Kota Makassar, Sulawesi Selatan.
+                </p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto border-t border-gray-800 pt-6 text-center text-gray-500 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p>&copy; 2026 Pesantren Darussalam. All Rights Reserved.</p>
+            <p class="text-[10px]">Powered by <a href="#" class="text-emerald-600 font-semibold hover:underline">lagingoding.com</a></p>
+        </div>
+    </footer>
+
+    <!-- STICKY WHATSAPP BUTTON -->
+    <a href="https://wa.me/6281234567890" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-xl hover:bg-green-600 transition z-50">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>

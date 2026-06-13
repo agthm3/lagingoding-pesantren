@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manhaj & Jenjang Madrasah - Pondok Pesantren Darussalam</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-[#fcfbf7] text-gray-800 antialiased font-sans">
+
+    <!-- Top Bar (Nuansa Islami dengan Aksen Emas) -->
+    <div class="bg-gradient-to-r from-emerald-950 via-emerald-900 to-emerald-950 text-white text-xs py-2.5 px-4 border-b border-amber-500/30">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-4 text-gray-200">
+                <span><i class="fa-solid fa-clock mr-1.5 text-amber-400"></i> Hubungi Kami Aktif: Sabtu - Kamis</span>
+                <span class="hidden md:inline">|</span>
+                <span><i class="fa-solid fa-envelope mr-1.5 text-amber-400"></i> sekretariat@darussalam.mahad.id</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="text-amber-400 font-serif italic tracking-wide">"Tafaqquh Fiddin"</span>
+                <div class="flex items-center gap-3 border-l border-emerald-700/50 pl-3 text-amber-400">
+                    <a href="#" class="hover:text-amber-300 transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-amber-300 transition"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="bg-white sticky top-0 z-50 shadow-md border-b-4 border-emerald-800">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-14 h-14 bg-emerald-900 rounded-full flex items-center justify-center text-amber-400 font-bold text-2xl shadow-md border-2 border-amber-400/60">
+                    <i class="fa-solid fa-mosque"></i>
+                </div>
+                <div>
+                    <h1 class="font-serif font-bold text-xl text-emerald-900 leading-tight tracking-wide">PONDOK PESANTREN DARUSSALAM</h1>
+                    <p class="text-[10px] text-amber-600 font-bold tracking-widest uppercase flex items-center gap-1.5">
+                        <i class="fa-solid fa-star text-[8px]"></i> Lembaga Pendidikan Salafiyah Syafi'iyah <i class="fa-solid fa-star text-[Star] text-[8px]"></i>
+                    </p>
+                </div>
+            </div>
+
+            <nav class="hidden lg:flex items-center gap-6 font-semibold text-sm text-emerald-950">
+                <a href="index.html" class="hover:text-amber-600 transition">Beranda</a>
+                <a href="profile.html" class="hover:text-amber-600 transition">Profil Ma'had</a>
+                <a href="#" class="text-amber-600 border-b-2 border-amber-500 pb-1">Madrasah</a>
+                <a href="#" class="hover:text-amber-600 transition">Kabar Kegiatan</a>
+                <a href="#" class="hover:text-amber-600 transition">Galeri Media</a>
+                <a href="#" class="hover:text-amber-600 transition">Hubungi</a>
+                
+                <!-- TOGGLE FITUR: MENU PPDB PREMIUM -->
+                <!-- @if(config('features.ppdb')) -->
+                <a href="#" class="bg-amber-500 hover:bg-amber-600 text-emerald-950 px-5 py-2 rounded-xl font-bold text-xs tracking-wider transition uppercase shadow border border-amber-400">
+                    <i class="fa-solid fa-graduation-cap mr-1"></i> PPDB Online
+                </a>
+                <!-- @endif -->
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header (Islamic Banner Style) -->
+    <section class="bg-emerald-950 text-white py-16 px-4 relative overflow-hidden text-center">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1542838132-92c53300491e')] bg-cover bg-center mix-blend-overlay"></div>
+        <div class="relative max-w-4xl mx-auto z-10">
+            <h2 class="font-serif text-2xl md:text-4xl font-bold tracking-wide text-white">Marhalah & Program Pendidikan</h2>
+            <p class="text-amber-400 font-serif italic text-xs md:text-sm mt-2">Sistem pengajaran terpadu kitab keagamaan salafiyah dan pendidikan nasional</p>
+            <div class="inline-flex items-center gap-2 mt-4 text-[11px] text-emerald-300 bg-emerald-900/60 px-4 py-1.5 rounded-full border border-emerald-800/60">
+                <a href="index.html" class="hover:text-white transition">Beranda</a> 
+                <span class="text-emerald-700">/</span> 
+                <span class="text-white">Madrasah</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daftar Jenjang Pendidikan / Marhalah -->
+    <section class="py-20 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-amber-600 block mb-1">Tingkatan Lembaga</span>
+                <h3 class="font-serif text-2xl md:text-3xl font-bold text-emerald-950 tracking-wide">Jenjang Pendidikan yang Dikelola</h3>
+                <div class="w-16 h-0.5 bg-amber-500 mx-auto mt-3"></div>
+            </div>
+
+            <!-- Grid Jenjang Islami -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Jenjang 1: MTs -->
+                <div class="bg-[#fcfbf7] rounded-2xl p-6 border border-emerald-900/5 hover:border-amber-400/40 hover:shadow-md transition flex flex-col justify-between relative overflow-hidden">
+                    <!-- Ornamen Kubah Transparan Halus di Pojok Card -->
+                    <div class="absolute -right-6 -bottom-6 text-emerald-900/5 text-7xl"><i class="fa-solid fa-mosque"></i></div>
+                    
+                    <div>
+                        <div class="w-12 h-12 bg-emerald-900 text-amber-400 rounded-xl flex items-center justify-center text-xl font-bold mb-4 border border-amber-400/20 shadow-sm">
+                            <i class="fa-solid fa-book"></i>
+                        </div>
+                        <h4 class="font-serif font-bold text-emerald-950 text-lg mb-1">Madrasah Tsanawiyah (MTs)</h4>
+                        <p class="text-[10px] text-amber-600 font-bold uppercase tracking-widest mb-3">Terakreditasi Kemenag • Tingkat Dasar</p>
+                        <p class="text-gray-600 text-xs leading-relaxed font-light mb-4">
+                            Pendidikan dasar formal 3 tahun yang menyelaraskan kurikulum nasional dengan materi dasar keislaman (Fathul Qarib, Al-Khulashah, Safinatun Najah).
+                        </p>
+                    </div>
+                    <div class="border-t border-emerald-900/10 pt-4 mt-2 relative z-10">
+                        <span class="text-[10px] font-bold text-emerald-900 uppercase tracking-wider block mb-1.5">Kajian Pokok:</span>
+                        <div class="flex flex-wrap gap-1.5 text-[10px] font-medium text-gray-700">
+                            <span class="bg-emerald-900/5 px-2 py-0.5 rounded border border-emerald-900/10">Fiqih Ibadah</span>
+                            <span class="bg-emerald-900/5 px-2 py-0.5 rounded border border-emerald-900/10">Nahwu Dasar</span>
+                            <span class="bg-emerald-900/5 px-2 py-0.5 rounded border border-emerald-900/10">Imriti</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jenjang 2: MA -->
+                <div class="bg-[#fcfbf7] rounded-2xl p-6 border border-emerald-900/5 hover:border-amber-400/40 hover:shadow-md transition flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-6 text-emerald-900/5 text-7xl"><i class="fa-solid fa-mosque"></i></div>
+                    
+                    <div>
+                        <div class="w-12 h-12 bg-emerald-900 text-amber-400 rounded-xl flex items-center justify-center text-xl font-bold mb-4 border border-amber-400/20 shadow-sm">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <h4 class="font-serif font-bold text-emerald-950 text-lg mb-1">Madrasah Aliyah (MA)</h4>
+                        <p class="text-[10px] text-amber-600 font-bold uppercase tracking-widest mb-3">Peminatan Keagamaan • Tingkat Atas</p>
+                        <p class="text-gray-600 text-xs leading-relaxed font-light mb-4">
+                            Mempersiapkan kader ulama mumpuni yang menguasai khazanah dalil hukum syariat Islam serta kemahiran aktif komunikasi bahasa Arab lisan dan tulisan.
+                        </p>
+                    </div>
+                    <div class="border-t border-emerald-900/10 pt-4 mt-2 relative z-10">
+                        <span class="text-[10px] font-bold text-emerald-900 uppercase tracking-wider block mb-1.5">Kajian Pokok:</span>
+                        <div class="flex flex-wrap gap-1.5 text-[10px] font-medium text-gray-700">
+                            <span class="bg-emerald-900/5 px-2 py-0.5 rounded border border-emerald-900/10">Alfiyah Ibnu Malik</span>
+                            <span class="bg-emerald-900/5 px-2 py-0.5 rounded border border-emerald-900/10">Ushul Fiqih</span>
+                            <span class="bg-emerald-900/5 px-2 py-0.5 rounded border border-emerald-900/10">Balaghah</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jenjang 3: Tahfidz -->
+                <div class="bg-[#fcfbf7] rounded-2xl p-6 border border-emerald-900/5 hover:border-amber-400/40 hover:shadow-md transition flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-6 text-emerald-900/5 text-7xl"><i class="fa-solid fa-mosque"></i></div>
+                    
+                    <div>
+                        <div class="w-12 h-12 bg-emerald-900 text-amber-400 rounded-xl flex items-center justify-center text-xl font-bold mb-4 border border-amber-400/20 shadow-sm">
+                            <i class="fa-solid fa-kaaba"></i>
+                        </div>
+                        <h4 class="font-serif font-bold text-emerald-950 text-lg mb-1">Tahfidzul Qur'an</h4>
+                        <p class="text-[10px] text-amber-600 font-bold uppercase tracking-widest mb-3">Madrasah Huffadz • Target 30 Juz</p>
+                        <p class="text-gray-600 text-xs leading-relaxed font-light mb-4">
+                            Madrasah penempaan khusus memfokuskan hafalan kalamullah murni 30 juz di bawah pengawasan ketat guru huffadz berkompeten pemegang sanad Al-Qur'an mutawatir.
+                        </p>
+                    </div>
+                    <div class="border-t border-emerald-900/10 pt-4 mt-2 relative z-10">
+                        <span class="text-[10px] font-bold text-emerald-900 uppercase tracking-wider block mb-1.5">Kajian Pokok:</span>
+                        <div class="flex flex-wrap gap-1.5 text-[10px] font-medium text-gray-700">
+                            <span class="bg-emerald-900/5 px-2 py-0.5 rounded border border-emerald-900/10">Ziyadah Mandiri</span>
+                            <span class="bg-emerald-900/5 px-2 py-0.5 rounded border border-emerald-900/10">Murajaah Halaqah</span>
+                            <span class="bg-emerald-900/5 px-2 py-0.5 rounded border border-emerald-900/10">Ilmu Tajwid-Gharib</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- TOGGLE FITUR: DOWNLOAD BROSUR KURIKULUM PREMIUM -->
+            <!-- @if(config('features.download_center')) -->
+            <div class="mt-16 p-6 bg-[#f4f2e9] rounded-2xl border border-amber-500/10 flex flex-col sm:flex-row justify-between items-center gap-4 max-w-3xl mx-auto shadow-sm">
+                <div class="flex items-center gap-4 text-center sm:text-left flex-col sm:flex-row">
+                    <div class="text-3xl text-emerald-900"><i class="fa-solid fa-file-pdf"></i></div>
+                    <div>
+                        <h5 class="font-serif font-bold text-sm text-emerald-950">Unduh Dokumen Kurikulum / Silabus</h5>
+                        <p class="text-xs text-gray-500 font-light">Dapatkan daftar lengkap rincian fan kitab beserta jadwal ujian madrasah.</p>
+                    </div>
+                </div>
+                <a href="#" class="bg-emerald-900 hover:bg-emerald-800 text-amber-300 border border-amber-500/30 text-xs font-bold px-5 py-3 rounded-xl transition whitespace-nowrap shadow-sm">
+                    <i class="fa-solid fa-download mr-1.5"></i> Unduh Berkas (.PDF)
+                </a>
+            </div>
+            <!-- @endif -->
+        </div>
+    </section>
+
+    <!-- Jadwal Aktivitas Yaumiyah (Harian Santri) -->
+    <section class="py-20 px-4 bg-[#f4f2e9] border-t border-gray-200/40 relative">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-14">
+                <span class="text-xs font-bold uppercase tracking-widest text-amber-600 block mb-1">Disiplin Waktu Ma'had</span>
+                <h3 class="font-serif text-2xl font-bold text-emerald-950 tracking-wide">Aktivitas Rutin Yaumiyah Santri</h3>
+                <div class="w-16 h-0.5 bg-amber-500 mx-auto mt-3"></div>
+            </div>
+
+            <!-- Timeline Khas Islami -->
+            <div class="bg-white rounded-2xl shadow-sm border border-emerald-900/5 overflow-hidden">
+                <div class="divide-y divide-gray-100">
+                    <!-- Jam 1 -->
+                    <div class="p-5 sm:grid sm:grid-cols-4 sm:gap-6 items-center">
+                        <div class="font-serif font-bold text-emerald-900 text-sm mb-1 sm:mb-0 flex items-center gap-2">
+                            <i class="fa-regular fa-clock text-amber-500"></i> 04.00 - 05.30
+                        </div>
+                        <div class="sm:col-span-3">
+                            <h5 class="font-serif font-bold text-emerald-950 text-sm">Shalat Subuh Berjamaah & Halaqah Qur'an</h5>
+                            <p class="text-xs text-gray-500 mt-1 font-light leading-relaxed">Dilanjutkan dengan pembacaan aurad (wirid) pagi berjamaah serta setoran hafalan baru (*ziyadah*) di hadapan ustadz pembimbing.</p>
+                        </div>
+                    </div>
+                    <!-- Jam 2 -->
+                    <div class="p-5 sm:grid sm:grid-cols-4 sm:gap-6 items-center">
+                        <div class="font-serif font-bold text-emerald-900 text-sm mb-1 sm:mb-0 flex items-center gap-2">
+                            <i class="fa-regular fa-clock text-amber-500"></i> 07.15 - 12.00
+                        </div>
+                        <div class="sm:col-span-3">
+                            <h5 class="font-serif font-bold text-emerald-950 text-sm">KBM Pengajaran Madrasah Formal</h5>
+                            <p class="text-xs text-gray-500 mt-1 font-light leading-relaxed">Santri mengikuti proses pembelajaran kurikulum nasional di gedung ruang kelas sesuai marhalah masing-masing.</p>
+                        </div>
+                    </div>
+                    <!-- Jam 3 -->
+                    <div class="p-5 sm:grid sm:grid-cols-4 sm:gap-6 items-center">
+                        <div class="font-serif font-bold text-emerald-900 text-sm mb-1 sm:mb-0 flex items-center gap-2">
+                            <i class="fa-regular fa-clock text-amber-500"></i> 14.00 - 15.15
+                        </div>
+                        <div class="sm:col-span-3">
+                            <h5 class="font-serif font-bold text-emerald-950 text-sm">Kajian Kitab Turats (Madrasah Diniyah)</h5>
+                            <p class="text-xs text-gray-500 mt-1 font-light leading-relaxed">Pendalaman kajian ilmu alat dan fiqih hukum klasik menggunakan sistem *bandongan* dipimpin dewan asatidzah.</p>
+                        </div>
+                    </div>
+                    <!-- Jam 4 -->
+                    <div class="p-5 sm:grid sm:grid-cols-4 sm:gap-6 items-center">
+                        <div class="font-serif font-bold text-emerald-900 text-sm mb-1 sm:mb-0 flex items-center gap-2">
+                            <i class="fa-regular fa-clock text-amber-500"></i> 18.30 - 20.30
+                        </div>
+                        <div class="sm:col-span-3">
+                            <h5 class="font-serif font-bold text-emerald-950 text-sm">Maghrib Mengaji & Isya Berjamaah</h5>
+                            <p class="text-xs text-gray-500 mt-1 font-light leading-relaxed">Pengulangan hafalan (*murajaah*) bersama asisten kamar dilanjutkan makan malam bersama secara tertib berdisiplin.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-b from-emerald-950 to-[#03140d] text-gray-400 text-xs py-16 px-4 border-t-4 border-amber-500">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center text-emerald-950 text-sm font-bold">
+                        <i class="fa-solid fa-mosque"></i>
+                    </div>
+                    <h4 class="text-white font-serif font-bold text-sm tracking-wider uppercase">Darussalam Ma'had</h4>
+                </div>
+                <p class="leading-relaxed text-gray-400 font-light">
+                    Membina akhlak mulia dan menegakkan panji-panji keilmuan syariat Islam yang luhur demi kemaslahatan umat dunia dan akhirat.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-amber-400 font-serif font-bold text-sm mb-4 tracking-wider uppercase">Menu Pintas</h4>
+                <ul class="space-y-2.5 font-medium">
+                    <li><a href="index.html" class="hover:text-white hover:underline transition flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-amber-500"></i> Beranda Utama</a></li>
+                    <li><a href="profile.html" class="hover:text-white hover:underline transition flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-amber-500"></i> Riwayat Profil</a></li>
+                    <li><a href="#" class="hover:text-white hover:underline transition flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-amber-500"></i> Lokasi Google Maps</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-amber-400 font-serif font-bold text-sm mb-4 tracking-wider uppercase">Biro Sekretariat</h4>
+                <p class="leading-relaxed mb-3 font-light">
+                    <i class="fa-solid fa-map-location-dot mr-2 text-amber-500"></i> Kampus Utama: Jl. Pendidikan No. 45, Tamalanrea, Kota Makassar, Sulawesi Selatan.
+                </p>
+                <p class="leading-relaxed font-light">
+                    <i class="fa-solid fa-phone mr-2 text-amber-500"></i> Telp/WA: +62 812-3456-7890
+                </p>
+            </div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto border-t border-emerald-900/60 pt-6 text-center text-gray-500 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p>&copy; 1447 - 2026 PP. Darussalam Makassar. Hak Cipta Dilindungi Undang-Undang.</p>
+            <p class="text-[10px] tracking-widest uppercase">Khidmat Media oleh <a href="#" class="text-amber-500 font-bold hover:underline">lagingoding.com</a></p>
+        </div>
+    </footer>
+
+    <!-- STICKY BUTTON WHATSAPP -->
+    <a href="https://wa.me/6281234567890" target="_blank" class="fixed bottom-6 right-6 bg-emerald-800 text-amber-300 w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl hover:bg-emerald-700 transition z-50 border border-amber-400">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesantren Modern Darussalam - Pendidikan Islam Masa Depan</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased font-sans">
+
+    <!-- Navbar / Header (Gaya Melayang - Floating Header Style) -->
+    <div class="w-full px-4 pt-4 sticky top-0 z-50">
+        <header class="max-w-7xl mx-auto bg-white/90 backdrop-blur-md rounded-2xl border border-slate-200/60 shadow-lg px-6 py-4 flex justify-between items-center">
+            
+            <!-- Logo & Identitas -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-gradient-to-tr应用 from-slate-900 to-indigo-950 rounded-xl flex items-center justify-center text-cyan-400 font-bold text-lg shadow-md">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-base text-slate-900 leading-tight tracking-tight">DARUSSALAM <span class="text-teal-600 font-medium">MODERN</span></h1>
+                    <p class="text-[9px] text-slate-400 font-semibold tracking-widest uppercase">Pesantren Modern Terpadu</p>
+                </div>
+            </div>
+
+            <!-- Menu Utama -->
+            <nav class="hidden lg:flex items-center gap-8 font-medium text-xs tracking-wide uppercase text-slate-600">
+                <a href="#" class="text-teal-600 font-bold border-b-2 border-teal-500 pb-1">Beranda</a>
+                <a href="#" class="hover:text-slate-900 transition">Tentang Kami</a>
+                <a href="#" class="hover:text-slate-900 transition">Program Studi</a>
+                <a href="#" class="hover:text-slate-900 transition">Kehidupan Kampus</a>
+                <a href="#" class="hover:text-slate-900 transition">Berita</a>
+                <a href="#" class="hover:text-slate-900 transition">Kontak</a>
+                
+                <!-- TOGGLE FITUR: MENU PPDB PREMIUM (Aksen Modern Minimalis) -->
+                <!-- @if(config('features.ppdb')) -->
+                <a href="#" class="bg-slate-900 hover:bg-slate-800 text-cyan-400 px-5 py-2.5 rounded-xl font-bold transition shadow-sm border border-slate-700">
+                    PPDB 2026/2027
+                </a>
+                <!-- @endif -->
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button class="lg:hidden text-slate-800 focus:outline-none">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </header>
+    </div>
+
+    <!-- Hero Section (Bersih, Tegas, & Dinamis) -->
+    <section class="max-w-7xl mx-auto px-4 pt-12 pb-20">
+        <div class="bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 text-white rounded-3xl p-8 md:p-16 relative overflow-hidden shadow-2xl">
+            <!-- Pola Grid Digital Halus -->
+            <div class="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/grid-me.png')]"></div>
+            <!-- Efek Cahaya Blur Neon -->
+            <div class="absolute -right-20 -top-20 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl"></div>
+            <div class="absolute -left-20 -bottom-20 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl"></div>
+
+            <div class="relative max-w-3xl z-10">
+                <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase text-cyan-400 mb-6 backdrop-blur-sm">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span> Pendaftaran Gelombang I Dibuka
+                </div>
+                <h2 class="text-3xl md:text-6xl font-black tracking-tight mb-6 leading-tight">
+                    Membentuk Generasi <br class="hidden md:inline">
+                    Muslim Masa Depan <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">Berbasis Sains & Iman</span>
+                </h2>
+                <p class="text-slate-400 text-sm md:text-base max-w-xl mb-8 leading-relaxed font-normal">
+                    Ekosistem pendidikan Islam terpadu yang memadukan keilmuan teknologi modern, penguasaan bahasa asing aktif, dan penanaman karakter adab Qur'ani yang kokoh.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-center gap-4">
+                    <a href="#" class="w-full sm:w-auto bg-teal-500 hover:bg-teal-600 text-slate-950 font-bold px-8 py-4 rounded-xl shadow-lg shadow-teal-500/20 transition text-center text-xs tracking-wider uppercase">
+                        Jelajahi Program
+                    </a>
+                    
+                    <!-- TOGGLE FITUR: TOMBOL PPDB UTAMA -->
+                    <!-- @if(config('features.ppdb')) -->
+                    <a href="#" class="w-full sm:w-auto bg-white/5 hover:bg-white/10 text-white font-semibold px-8 py-4 rounded-xl border border-white/10 transition text-center text-xs tracking-wider uppercase flex items-center justify-center gap-2">
+                        Pendaftaran Online <i class="fa-solid fa-arrow-right text-[10px] text-cyan-400"></i>
+                    </a>
+                    <!-- @endif -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seksi Sambutan Direktur Pendidikan (Tata Letak Bersih) -->
+    <section class="max-w-7xl mx-auto px-4 py-12 bg-white rounded-3xl border border-slate-200/50 shadow-sm mb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center p-4 md:p-8">
+            <div class="lg:col-span-4 text-center lg:text-left">
+                <div class="w-52 h-52 bg-slate-100 rounded-2xl shadow-inner mx-auto lg:mx-0 overflow-hidden border border-slate-200 flex items-center justify-center">
+                    <i class="fa-solid fa-user-gear text-5xl text-slate-300"></i>
+                </div>
+                <h4 class="font-extrabold text-slate-900 mt-4 text-base">Dr. H. Ahmad Mustofa, M.T.</h4>
+                <p class="text-xs text-teal-600 font-semibold tracking-wider mt-0.5 uppercase">Direktur Pendidikan</p>
+            </div>
+            <div class="lg:col-span-8">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 block mb-2">Sambutan Pengasuh</span>
+                <h3 class="text-xl md:text-2xl font-black text-slate-900 mb-4 tracking-tight">Transformasi Pendidikan Islam di Era Digital</h3>
+                <p class="text-slate-500 leading-relaxed text-sm md:text-base font-normal">
+                    "Peradaban bergerak sangat cepat menuju digitalisasi penuh. Pesantren Darussalam Modern berkomitmen penuh menyediakan lingkungan belajar yang relevan dengan tantangan global. Kami mendidik santri bukan sekadar untuk menjadi pengguna teknologi, melainkan menjadi inovator masa depan yang tetap menjunjung tinggi adab dan nilai-nilai Al-Qur'an."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seksi Berita & Informasi (CMS Grid Minimalis) -->
+    <section class="max-w-7xl mx-auto px-4 py-12 mb-16">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 gap-4 border-b border-slate-200 pb-4">
+            <div>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-teal-600 block mb-1">Informasi Terbaru</span>
+                <h3 class="text-2xl font-black text-slate-900 tracking-tight">Kabar & Kegiatan Kampus</h3>
+            </div>
+            <a href="#" class="text-xs font-bold text-slate-900 hover:text-teal-600 flex items-center gap-1.5 transition">
+                Lihat Semua Berita <i class="fa-solid fa-arrow-right-long text-[10px]"></i>
+            </a>
+        </div>
+
+        <!-- Grid Cards Berita Minimalis -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Item 1 -->
+            <div class="bg-white rounded-2xl border border-slate-200/60 overflow-hidden hover:border-slate-300 hover:shadow-xl transition duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="h-44 bg-slate-100 flex items-center justify-center text-slate-300 border-b border-slate-100 relative">
+                        <i class="fa-regular fa-image text-3xl"></i>
+                        <span class="absolute top-4 left-4 bg-slate-900 text-cyan-400 text-[9px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider">Teknologi</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-[10px] text-slate-400 flex items-center gap-2 mb-2 font-semibold">
+                            <span><i class="fa-regular fa-calendar mr-1"></i> 14 Juni 2026</span>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-base mb-2 hover:text-teal-600 cursor-pointer line-clamp-2 transition">
+                            Santri Darussalam Sukses Luncurkan Aplikasi Pemantau Lingkungan Berbasis IoT
+                        </h4>
+                        <p class="text-slate-500 text-xs leading-relaxed font-light line-clamp-3">
+                            Melalui bimbingan laboratorium riset teknologi pesantren, tim kolaborasi santri tingkat aliyah berhasil menyelesaikan proyek pembuatan alat...
+                        </p>
+                    </div>
+                </div>
+                <div class="p-6 pt-0 text-xs font-bold text-teal-600 flex items-center gap-1 hover:underline cursor-pointer">
+                    Baca Artikel <i class="fa-solid fa-angle-right text-[9px]"></i>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="bg-white rounded-2xl border border-slate-200/60 overflow-hidden hover:border-slate-300 hover:shadow-xl transition duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="h-44 bg-slate-100 flex items-center justify-center text-slate-300 border-b border-slate-100 relative">
+                        <i class="fa-regular fa-image text-3xl"></i>
+                        <span class="absolute top-4 left-4 bg-slate-900 text-cyan-400 text-[9px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider">Bahasa</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-[10px] text-slate-400 flex items-center gap-2 mb-2 font-semibold">
+                            <span><i class="fa-regular fa-calendar mr-1"></i> 10 Juni 2026</span>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-base mb-2 hover:text-teal-600 cursor-pointer line-clamp-2 transition">
+                            Kompetisi Debat Bahasa Arab: Delegasi Pesantren Raih Peringkat 3 Besar Nasional
+                        </h4>
+                        <p class="text-slate-500 text-xs leading-relaxed font-light line-clamp-3">
+                            Perwakilan santri dari program kelas intensif kebahasaan berhasil membuktikan keahlian argumen publik mereka pekan ini...
+                        </p>
+                    </div>
+                </div>
+                <div class="p-6 pt-0 text-xs font-bold text-teal-600 flex items-center gap-1 hover:underline cursor-pointer">
+                    Baca Artikel <i class="fa-solid fa-angle-right text-[9px]"></i>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="bg-white rounded-2xl border border-slate-200/60 overflow-hidden hover:border-slate-300 hover:shadow-xl transition duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="h-44 bg-slate-100 flex items-center justify-center text-slate-300 border-b border-slate-100 relative">
+                        <i class="fa-regular fa-image text-3xl"></i>
+                        <span class="absolute top-4 left-4 bg-slate-900 text-cyan-400 text-[9px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider">Pengumuman</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-[10px] text-slate-400 flex items-center gap-2 mb-2 font-semibold">
+                            <span><i class="fa-regular fa-calendar mr-1"></i> 05 Juni 2026</span>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-base mb-2 hover:text-teal-600 cursor-pointer line-clamp-2 transition">
+                            Pengumuman Hasil Seleksi Berkas Gelombang I Jalur Beasiswa Tahfidz
+                        </h4>
+                        <p class="text-slate-500 text-xs leading-relaxed font-light line-clamp-3">
+                            Panitia pusat penerimaan santri baru resmi merilis daftar nama berkas calon pendaftar yang dinyatakan lolos tahap administrasi...
+                        </p>
+                    </div>
+                </div>
+                <div class="p-6 pt-0 text-xs font-bold text-teal-600 flex items-center gap-1 hover:underline cursor-pointer">
+                    Baca Artikel <i class="fa-solid fa-angle-right text-[9px]"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOGGLE FITUR: FAQ PREMIUM SECTION (Clean Minimalist Accordion) -->
+    <!-- @if(config('features.faq')) -->
+    <section class="max-w-4xl mx-auto px-4 py-12 mb-16">
+        <div class="text-center mb-10">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-teal-600 block mb-1">Tanya Jawab</span>
+            <h3 class="text-2xl font-black text-slate-900 tracking-tight">Pertanyaan Umum (FAQ)</h3>
+            <div class="w-8 h-1 bg-teal-500 mx-auto mt-3 rounded-full"></div>
+        </div>
+
+        <div class="space-y-3">
+            <div class="border border-slate-200 bg-white rounded-xl p-4 hover:border-slate-300 transition shadow-sm">
+                <h4 class="font-bold text-sm text-slate-900 flex justify-between items-center cursor-pointer">
+                    Apakah kurikulum sains teknologi mengurangi porsi hafalan Al-Qur'an?
+                    <i class="fa-solid fa-plus text-xs text-teal-600"></i>
+                </h4>
+                <p class="text-xs text-slate-500 mt-2 leading-relaxed border-t border-slate-100 pt-2 font-light">
+                    Tidak sama sekali. Kami menerapkan manajemen waktu berbasis blok. Sesi pagi digunakan fokus penuh untuk program tahfidz dan ilmu syar'i, sedangkan sesi siang dialokasikan khusus untuk akselerasi sains dan teknologi komputer.
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- @endif -->
+
+    <!-- Footer Modern-Minimalist (Clean Grid Slate) -->
+    <footer class="bg-slate-950 text-slate-400 text-xs py-16 px-4 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="w-8 h-8 bg-gradient-to-tr应用 from-slate-900 to-indigo-950 rounded-lg flex items-center justify-center text-cyan-400 font-bold">
+                        <i class="fa-solid fa-layer-group text-sm"></i>
+                    </div>
+                    <span class="text-white font-extrabold text-sm tracking-tight">DARUSSALAM MODERN</span>
+                </div>
+                <p class="leading-relaxed text-slate-400 font-light">
+                    Membentuk generasi muslim unggulan yang kompeten di bidang sains industri serta kokoh dalam tatanan nilai moral dan adab Islami.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-sm mb-4 tracking-tight">Navigasi Pintas</h4>
+                <ul class="space-y-2.5 font-medium text-slate-400">
+                    <li><a href="#" class="hover:text-white transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-[8px] text-teal-500"></i> Infrastruktur Kampus</a></li>
+                    <li><a href="#" class="hover:text-white transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-[8px] text-teal-500"></i> Kode Etik Kedisiplinan</a></li>
+                    <li><a href="#" class="hover:text-white transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-[8px] text-teal-500"></i> Peta Lokasi Integrasi</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-sm mb-4 tracking-tight">Pusat Informasi</h4>
+                <p class="leading-relaxed mb-3 font-light">
+                    <i class="fa-solid fa-map-pin mr-2 text-teal-500"></i> Kantor Utama: Jl. Pendidikan No. 45, Tamalanrea, Kota Makassar, Sulawesi Selatan.
+                </p>
+                <p class="leading-relaxed font-light">
+                    <i class="fa-solid fa-headset mr-2 text-teal-500"></i> Layanan Informasi: +62 812-3456-7890
+                </p>
+            </div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto border-t border-slate-900 pt-6 text-center text-gray-600 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p>&copy; 2026 Darussalam Modern Academy. Hak Cipta Dilindungi.</p>
+            <p class="text-[10px] tracking-wider uppercase font-semibold">Infrastruktur Sistem oleh <a href="#" class="text-teal-500 hover:underline">lagingoding.com</a></p>
+        </div>
+    </footer>
+
+    <!-- STICKY FLOATING ACTION WHATSAPP -->
+    <a href="https://wa.me/6281234567890" target="_blank" class="fixed bottom-6 right-6 bg-white text-slate-900 w-14 h-14 rounded-2xl flex items-center justify-center text-xl shadow-2xl hover:bg-slate-100 transition z-50 border border-slate-200">
+        <i class="fa-brands fa-whatsapp text-emerald-600"></i>
+    </a>
+
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri Dokumentasi - Pesantren Darussalam</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased font-sans">
+
+    <!-- Top Bar -->
+    <div class="bg-emerald-900 text-white text-xs py-2 px-4 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-4">
+                <span><i class="fa-solid fa-phone mr-1 text-emerald-400"></i> +62 812-3456-7890</span>
+                <span><i class="fa-solid fa-envelope mr-1 text-emerald-400"></i> info@pesandren-dummy.sch.id</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="#" class="hover:text-emerald-300"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="hover:text-emerald-300"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-emerald-300"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-emerald-800 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-inner">
+                    <i class="fa-solid fa-mosque"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg text-emerald-900 leading-tight tracking-wide">PESANTREN DARUSSALAM</h1>
+                    <p class="text-xs text-gray-500 font-medium tracking-widest uppercase">KOTA MAKASSAR</p>
+                </div>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-6 font-medium text-sm text-gray-600">
+                <a href="index.html" class="hover:text-emerald-700 transition">Beranda</a>
+                <a href="profile.html" class="hover:text-emerald-700 transition">Profil</a>
+                <a href="pendidikan.html" class="hover:text-emerald-700 transition">Pendidikan</a>
+                <a href="fasilitas.html" class="hover:text-emerald-700 transition">Fasilitas</a>
+                <a href="berita.html" class="hover:text-emerald-700 transition">Berita</a>
+                <a href="#" class="text-emerald-700 font-semibold border-b-2 border-emerald-700 pb-1">Galeri</a>
+                <a href="#" class="hover:text-emerald-700 transition">Kontak</a>
+                
+                <!-- TOGGLE FITUR: MENU PPDB PREMIUM -->
+                <!-- @if(config('features.ppdb')) -->
+                <a href="#" class="bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded font-semibold text-xs tracking-wider transition uppercase shadow">
+                    Daftar PPDB
+                </a>
+                <!-- @endif -->
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="bg-emerald-950 text-white py-12 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1590075865003-e48277adc558')] bg-cover bg-center mix-blend-overlay"></div>
+        <div class="relative max-w-7xl mx-auto text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <h2 class="text-2xl md:text-3xl font-bold tracking-tight">Galeri Media</h2>
+                <p class="text-emerald-300 text-xs mt-1">Dokumentasi lensa kegiatan pembelajaran, lingkungan asrama, dan video profil ma'had</p>
+            </div>
+            <div class="text-xs text-emerald-400 bg-emerald-900/50 px-4 py-2 rounded border border-emerald-800/60">
+                <a href="index.html" class="hover:text-white transition">Beranda</a> 
+                <span class="mx-2 text-gray-500">/</span> 
+                <span class="text-white">Galeri</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Konten Utama Galeri -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Grid Pemisah Media -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- KOLOM KIRI: GALERI FOTO (8 Kolom) -->
+                <div class="lg:col-span-8">
+                    <div class="border-b border-gray-100 pb-3 mb-6">
+                        <h3 class="text-lg font-bold text-gray-900 tracking-tight flex items-center gap-2">
+                            <i class="fa-regular fa-images text-emerald-700"></i> Dokumentasi Foto Kegiatan
+                        </h3>
+                    </div>
+
+                    <!-- Grid Foto -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Item Foto 1 -->
+                        <div class="group relative bg-gray-100 rounded-xl overflow-hidden h-48 border border-gray-100 cursor-pointer shadow-sm hover:shadow-md transition"
+                             onclick="openGalleryModal('image', 'Kajian Rutin Kitab Kuning Bakda Subuh', 'https://images.unsplash.com/photo-1590075865003-e48277adc558')">
+                            <!-- Simulasi Gambar asli memakai unsplash placeholder -->
+                            <img src="https://images.unsplash.com/photo-1590075865003-e48277adc558" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" alt="Galeri">
+                            <!-- Overlay Efek Hover -->
+                            <div class="absolute inset-0 bg-gradient-to-t应用 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-4">
+                                <span class="text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-1">Kegiatan Santri</span>
+                                <h4 class="text-white font-bold text-sm leading-snug line-clamp-2">Kajian Rutin Kitab Kuning Bakda Subuh</h4>
+                            </div>
+                        </div>
+
+                        <!-- Item Foto 2 -->
+                        <div class="group relative bg-gray-100 rounded-xl overflow-hidden h-48 border border-gray-100 cursor-pointer shadow-sm hover:shadow-md transition"
+                             onclick="openGalleryModal('image', 'Kerja Bakti Akbar Kebersihan Komplek Asrama', 'https://images.unsplash.com/photo-1540555700478-4be289fbecef')">
+                            <img src="https://images.unsplash.com/photo-1455734729978-db1ae4f687fc" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" alt="Galeri">
+                            <div class="absolute inset-0 bg-gradient-to-t应用 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-4">
+                                <span class="text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-1">Kebersihan</span>
+                                <h4 class="text-white font-bold text-sm leading-snug line-clamp-2">Kerja Bakti Akbar Kebersihan Komplek Asrama</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KOLOM KANAN: GALERI VIDEO (4 Kolom) -->
+                <div class="lg:col-span-4 border-t lg:border-t-0 lg:border-l lg:border-gray-100 pt-8 lg:pt-0 lg:pl-8">
+                    <div class="border-b border-gray-100 pb-3 mb-6">
+                        <h3 class="text-lg font-bold text-gray-900 tracking-tight flex items-center gap-2">
+                            <i class="fa-regular fa-circle-play text-emerald-700"></i> Video Dokumenter
+                        </h3>
+                    </div>
+
+                    <!-- List Stack Video -->
+                    <div class="space-y-6">
+                        <!-- Item Video 1 (Gunakan ID Video YouTube Asli sebagai parameter) -->
+                        <div class="group bg-white rounded-xl border border-gray-200 p-3 hover:shadow-md transition cursor-pointer flex gap-4 items-center"
+                             onclick="openGalleryModal('video', 'Video Profil Resmi Pesantren Darussalam', 'dQw4w9WgXcQ')">
+                            <div class="w-24 h-16 bg-gray-900 rounded-lg shrink-0 flex items-center justify-center text-white relative overflow-hidden">
+                                <i class="fa-solid fa-play text-xs bg-emerald-700 w-7 h-7 rounded-full flex items-center justify-center shadow z-10 group-hover:scale-110 transition"></i>
+                                <div class="absolute inset-0 bg-black/30 mix-blend-overlay"></div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-xs leading-snug group-hover:text-emerald-700 transition line-clamp-2">
+                                    Video Profil Resmi Pesantren Darussalam
+                                </h4>
+                                <span class="text-[10px] text-gray-400 block mt-1"><i class="fa-brands fa-youtube mr-1 text-red-600"></i> YouTube Media</span>
+                            </div>
+                        </div>
+
+                        <!-- Item Video 2 -->
+                        <div class="group bg-white rounded-xl border border-gray-200 p-3 hover:shadow-md transition cursor-pointer flex gap-4 items-center"
+                             onclick="openGalleryModal('video', 'Dokumentasi Kilas Balik Wisuda Santri 2026', 'dQw4w9WgXcQ')">
+                            <div class="w-24 h-16 bg-gray-900 rounded-lg shrink-0 flex items-center justify-center text-white relative overflow-hidden">
+                                <i class="fa-solid fa-play text-xs bg-emerald-700 w-7 h-7 rounded-full flex items-center justify-center shadow z-10 group-hover:scale-110 transition"></i>
+                                <div class="absolute inset-0 bg-black/30 mix-blend-overlay"></div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-xs leading-snug group-hover:text-emerald-700 transition line-clamp-2">
+                                    Dokumentasi Kilas Balik Wisuda Santri Angkatan X
+                                </h4>
+                                <span class="text-[10px] text-gray-400 block mt-1"><i class="fa-brands fa-youtube mr-1 text-red-600"></i> YouTube Media</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- POP-UP MODAL PINTAR GABUNGAN (FOTO & VIDEO) -->
+    <div id="mediaPopupModal" class="fixed inset-0 z-50 hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <!-- Overlay Latar Belakang Gelap Ringan -->
+            <div class="fixed inset-0 transition-opacity bg-gray-900 bg-opacity-75 backdrop-blur-sm" onclick="closeGalleryModal()"></div>
+
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+            <!-- Konten Box Utama Modal (Lebar maksimal disesuaikan: max-w-3xl agar rasio video 16:9 pas) -->
+            <div class="inline-block overflow-hidden text-left align-bottom transition-all transform bg-white rounded-2xl shadow-2xl sm:my-8 sm:align-middle sm:max-w-3xl sm:w-full border border-gray-100">
+                
+                <!-- Bagian Penampung Konten Utama Medis -->
+                <div class="relative bg-black h-[24rem] sm:h-[28rem] flex items-center justify-center">
+                    
+                    <!-- Wadah Elemen 1: Jika bertipe GAGAL FOTO -->
+                    <img id="modalTargetImage" src="" class="hidden w-full h-full object-contain" alt="Preview Foto">
+
+                    <!-- Wadah Elemen 2: Jika bertipe VIDEO YOUTUBE (Iframe) -->
+                    <div id="modalTargetVideoWrapper" class="hidden w-full h-full">
+                        <iframe id="modalTargetYoutubeIframe" class="w-full h-full" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+
+                    <!-- Tombol Tutup X Melayang -->
+                    <button onclick="closeGalleryModal()" class="absolute top-4 right-4 bg-black/60 hover:bg-black/80 text-white w-9 h-9 rounded-full flex items-center justify-center transition focus:outline-none z-20">
+                        <i class="fa-solid fa-xmark text-sm"></i>
+                    </button>
+                </div>
+                
+                <!-- Detail Keterangan Bawah Media -->
+                <div class="p-5 bg-white border-t border-gray-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                    <h4 class="font-bold text-gray-900 text-sm tracking-tight" id="modalMediaTitle">Judul Keterangan Media</h4>
+                    <button type="button" onclick="closeGalleryModal()" class="w-full sm:w-auto bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-semibold px-4 py-2 rounded transition focus:outline-none text-center">
+                        Tutup
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 text-xs py-12 px-4 border-t-4 border-emerald-800">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div>
+                <h4 class="text-white font-bold text-sm mb-4 tracking-wider uppercase">Tentang Kami</h4>
+                <p class="leading-relaxed mb-4 text-gray-400">
+                    Pesantren Darussalam berdedikasi tinggi menyelenggarakan sistem pengajaran Islam transparan dan bermutu tinggi di wilayah Indonesia Timur.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-sm mb-4 tracking-wider uppercase">Tautan Cepat</h4>
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="hover:text-white transition">Beranda</a></li>
+                    <li><a href="profile.html" class="hover:text-white transition">Profil Lembaga</a></li>
+                    <li><a href="fasilitas.html" class="hover:text-white transition">Sarana Fasilitas</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-sm mb-4 tracking-wider uppercase">Sekretariat</h4>
+                <p class="leading-relaxed mb-2">
+                    <i class="fa-solid fa-location-dot mr-1.5 text-emerald-500"></i> Jl. Pendidikan No. 45, Kecamatan Tamalanrea, Kota Makassar, Sulawesi Selatan.
+                </p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto border-t border-gray-800 pt-6 text-center text-gray-500 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p>&copy; 2026 Pesantren Darussalam. All Rights Reserved.</p>
+            <p class="text-[10px]">Powered by <a href="#" class="text-emerald-600 font-semibold hover:underline">lagingoding.com</a></p>
+        </div>
+    </footer>
+
+    <!-- STICKY WHATSAPP BUTTON -->
+    <a href="https://wa.me/6281234567890" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-xl hover:bg-green-600 transition z-50">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- JAVASCRIPT LOGIKAL MODAL PINTAR -->
+    <script>
+        function openGalleryModal(type, title, sourceData) {
+            const modal = document.getElementById('mediaPopupModal');
+            const imgElement = document.getElementById('modalTargetImage');
+            const videoWrapper = document.getElementById('modalTargetVideoWrapper');
+            const iframeElement = document.getElementById('modalTargetYoutubeIframe');
+            
+            // Set Judul Teks
+            document.getElementById('modalMediaTitle').innerText = title;
+
+            // Sembunyikan kedua tipe kontainer terlebih dahulu untuk reset state
+            imgElement.classList.add('hidden');
+            videoWrapper.classList.add('hidden');
+            iframeElement.setAttribute('src', ''); // Kosongkan iframe agar video berhenti berputar jika ditutup
+
+            if (type === 'image') {
+                // Tampilkan mode foto, set sumber gambar
+                imgElement.setAttribute('src', sourceData);
+                imgElement.classList.remove('hidden');
+            } else if (type === 'video') {
+                // Tampilkan mode video, rakit url embedded YouTube
+                const youtubeEmbedUrl = "https://www.youtube.com/embed/" + sourceData + "?autoplay=1";
+                iframeElement.setAttribute('src', youtubeEmbedUrl);
+                videoWrapper.classList.remove('hidden');
+            }
+
+            // Tampilkan komponen modal secara visual
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeGalleryModal() {
+            const modal = document.getElementById('mediaPopupModal');
+            const iframeElement = document.getElementById('modalTargetYoutubeIframe');
+            
+            // Matikan paksa pemutaran video dengan mencabut atribut src sebelum menutup modal
+            iframeElement.setAttribute('src', '');
+            
+            modal.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+    </script>
+
+</body>
+</html>

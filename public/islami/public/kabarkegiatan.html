@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warta & Kabar Kegiatan - Pondok Pesantren Darussalam</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-[#fcfbf7] text-gray-800 antialiased font-sans">
+
+    <!-- Top Bar -->
+    <div class="bg-gradient-to-r from-emerald-950 via-emerald-900 to-emerald-950 text-white text-xs py-2.5 px-4 border-b border-amber-500/30">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-4 text-gray-200">
+                <span><i class="fa-solid fa-clock mr-1.5 text-amber-400"></i> Hubungi Kami Aktif: Sabtu - Kamis</span>
+                <span class="hidden md:inline">|</span>
+                <span><i class="fa-solid fa-envelope mr-1.5 text-amber-400"></i> sekretariat@darussalam.mahad.id</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="text-amber-400 font-serif italic tracking-wide">"Tafaqquh Fiddin"</span>
+                <div class="flex items-center gap-3 border-l border-emerald-700/50 pl-3 text-amber-400">
+                    <a href="#" class="hover:text-amber-300 transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-amber-300 transition"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="bg-white sticky top-0 z-50 shadow-md border-b-4 border-emerald-800">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-14 h-14 bg-emerald-900 rounded-full flex items-center justify-center text-amber-400 font-bold text-2xl shadow-md border-2 border-amber-400/60">
+                    <i class="fa-solid fa-mosque"></i>
+                </div>
+                <div>
+                    <h1 class="font-serif font-bold text-xl text-emerald-900 leading-tight tracking-wide">PONDOK PESANTREN DARUSSALAM</h1>
+                    <p class="text-[10px] text-amber-600 font-bold tracking-widest uppercase flex items-center gap-1.5">
+                        <i class="fa-solid fa-star text-[8px]"></i> Lembaga Pendidikan Salafiyah Syafi'iyah <i class="fa-solid fa-star text-[8px]"></i>
+                    </p>
+                </div>
+            </div>
+
+            <nav class="hidden lg:flex items-center gap-6 font-semibold text-sm text-emerald-950">
+                <a href="index.html" class="hover:text-amber-600 transition">Beranda</a>
+                <a href="profile.html" class="hover:text-amber-600 transition">Profil Ma'had</a>
+                <a href="madrasah.html" class="hover:text-amber-600 transition">Madrasah</a>
+                <a href="#" class="text-amber-600 border-b-2 border-amber-500 pb-1">Kabar Kegiatan</a>
+                <a href="#" class="hover:text-amber-600 transition">Galeri Media</a>
+                <a href="#" class="hover:text-amber-600 transition">Hubungi</a>
+                
+                <!-- TOGGLE FITUR: MENU PPDB PREMIUM -->
+                <!-- @if(config('features.ppdb')) -->
+                <a href="#" class="bg-amber-500 hover:bg-amber-600 text-emerald-950 px-5 py-2 rounded-xl font-bold text-xs tracking-wider transition uppercase shadow border border-amber-400">
+                    <i class="fa-solid fa-graduation-cap mr-1"></i> PPDB Online
+                </a>
+                <!-- @endif -->
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="bg-emerald-950 text-white py-16 px-4 relative overflow-hidden text-center">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1542838132-92c53300491e')] bg-cover bg-center mix-blend-overlay"></div>
+        <div class="relative max-w-4xl mx-auto z-10">
+            <h2 class="font-serif text-2xl md:text-4xl font-bold tracking-wide text-white">Kilas Warta Ma'had</h2>
+            <p class="text-amber-400 font-serif italic text-xs md:text-sm mt-2">Portal informasi resmi seputar kegiatan, prestasi santri, dan maklumat pondok</p>
+            <div class="inline-flex items-center gap-2 mt-4 text-[11px] text-emerald-300 bg-emerald-900/60 px-4 py-1.5 rounded-full border border-emerald-800/60">
+                <a href="index.html" class="hover:text-white transition">Beranda</a> 
+                <span class="text-emerald-700">/</span> 
+                <span class="text-white">Kabar Kegiatan</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Kategori & Bar Pencarian -->
+    <section class="pt-12 px-4 bg-white">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 border-b border-emerald-900/10 pb-6">
+            <!-- Kategori Khas Islami -->
+            <div class="flex flex-wrap gap-2 text-xs font-bold">
+                <button class="bg-emerald-900 text-amber-400 border border-amber-500/30 px-5 py-2 rounded-xl shadow-md shadow-emerald-950/20">Semua Warta</button>
+                <button class="bg-[#fcfbf7] text-emerald-950 hover:bg-emerald-900/5 border border-emerald-900/10 px-5 py-2 rounded-xl transition">Kegiatan Santri</button>
+                <button class="bg-[#fcfbf7] text-emerald-950 hover:bg-emerald-900/5 border border-emerald-900/10 px-5 py-2 rounded-xl transition">Kabar Prestasi</button>
+                <button class="bg-[#fcfbf7] text-emerald-950 hover:bg-emerald-900/5 border border-emerald-900/10 px-5 py-2 rounded-xl transition">Maklumat Resmi</button>
+            </div>
+            <!-- Kotak Pencarian -->
+            <div class="relative w-full md:w-72">
+                <input type="text" placeholder="Cari berita..." class="w-full text-xs border border-emerald-900/10 rounded-xl pl-9 pr-4 py-3 bg-[#fcfbf7] focus:outline-none focus:border-amber-500 focus:bg-white shadow-inner transition">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-4 text-emerald-900/30 text-xs"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Grid Konten Berita -->
+    <section class="py-12 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Warta 1 -->
+                <div class="bg-[#fcfbf7] rounded-2xl shadow-sm border border-emerald-900/5 overflow-hidden hover:shadow-md transition flex flex-col justify-between cursor-pointer group"
+                     onclick="openIslamicNewsModal('Pembukaan Pengajian Kitab Kuning Kilasan Syawal Bersama Dewan Pengasuh', '14 Dzulhijjah 1447 H', 'Kegiatan Santri', 'Majelis ilmu tahunan ini diikuti oleh seluruh santri mukim guna mengkhatamkan beberapa ringkasan kitab fiqih dasar kontemporer selama masa liburan syawal.\n\nKH. Ahmad Mustofa menekankan pentingnya santri memanfaatkan waktu luang untuk memperdalam pemahaman nash hukum fikih klasik agar sanad pemikiran tidak terputus di tengah gempuran pemikiran digital modern.')">
+                    <div>
+                        <div class="h-48 bg-emerald-900/5 flex items-center justify-center text-emerald-900/20 relative">
+                            <i class="fa-regular fa-image text-3xl group-hover:scale-105 transition duration-300"></i>
+                            <span class="absolute top-4 left-4 bg-emerald-900 text-amber-400 text-[10px] font-bold px-2.5 py-1 rounded-md border border-amber-500/20">Kegiatan</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-[11px] text-gray-400 flex items-center gap-2 mb-2 font-semibold">
+                                <span><i class="fa-regular fa-calendar mr-1 text-amber-500"></i> 14 Dzulhijjah 1447 H</span>
+                            </div>
+                            <h4 class="font-serif font-bold text-emerald-950 text-base mb-2 group-hover:text-amber-600 transition line-clamp-2 leading-snug">
+                                Pembukaan Pengajian Kitab Kuning Kilasan Syawal Bersama Dewan Pengasuh
+                            </h4>
+                            <p class="text-gray-500 text-xs leading-relaxed font-light line-clamp-3">
+                                Majelis ilmu tahunan ini diikuti oleh seluruh santri mukim guna mengkhatamkan beberapa ringkasan kitab fiqih dasar kontemporer...
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2 text-xs font-bold text-emerald-900 group-hover:text-amber-600 flex items-center gap-1">
+                        Iqra' Selengkapnya <i class="fa-solid fa-arrow-right-long text-[10px] mt-0.5"></i>
+                    </div>
+                </div>
+
+                <!-- Warta 2 -->
+                <div class="bg-[#fcfbf7] rounded-2xl shadow-sm border border-emerald-900/5 overflow-hidden hover:shadow-md transition flex flex-col justify-between cursor-pointer group"
+                     onclick="openIslamicNewsModal('Alhamdulillah, Santri Darussalam Raih Juara 1 Hafalan Qur\'an 20 Juz', '10 Dzulhijjah 1447 H', 'Kabar Prestasi', 'Ananda Ahmad Baihaqi sukses mengharumkan nama pondok dalam perhelatan Musabaqah Tilawatil Qur\'an (MTQ) tingkat nasional.\n\nDengan tajwid yang mutqin dan alunan lagu yang merdu, ananda berhasil meraih nilai tertinggi di cabang hafalan 20 juz. Dewan pengasuh berharap prestasi ini memicu semangat santri lainnya untuk lebih giat melakukan murajaah.')">
+                    <div>
+                        <div class="h-48 bg-emerald-900/5 flex items-center justify-center text-emerald-900/20 relative">
+                            <i class="fa-regular fa-image text-3xl group-hover:scale-105 transition duration-300"></i>
+                            <span class="absolute top-4 left-4 bg-emerald-900 text-amber-400 text-[10px] font-bold px-2.5 py-1 rounded-md border border-amber-500/20">Prestasi</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-[11px] text-gray-400 flex items-center gap-2 mb-2 font-semibold">
+                                <span><i class="fa-regular fa-calendar mr-1 text-amber-500"></i> 10 Dzulhijjah 1447 H</span>
+                            </div>
+                            <h4 class="font-serif font-bold text-emerald-950 text-base mb-2 group-hover:text-amber-600 transition line-clamp-2 leading-snug">
+                                Alhamdulillah, Santri Darussalam Raih Juara 1 Hafalan Qur'an 20 Juz
+                            </h4>
+                            <p class="text-gray-500 text-xs leading-relaxed font-light line-clamp-3">
+                                Ananda Ahmad Baihaqi sukses mengharumkan nama pondok dalam perhelatan Musabaqah Tilawatil Qur'an (MTQ) tingkat nasional...
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2 text-xs font-bold text-emerald-900 group-hover:text-amber-600 flex items-center gap-1">
+                        Iqra' Selengkapnya <i class="fa-solid fa-arrow-right-long text-[10px] mt-0.5"></i>
+                    </div>
+                </div>
+
+                <!-- Warta 3 -->
+                <div class="bg-[#fcfbf7] rounded-2xl shadow-sm border border-emerald-900/5 overflow-hidden hover:shadow-md transition flex flex-col justify-between cursor-pointer group"
+                     onclick="openIslamicNewsModal('Maklumat Libur Idul Adha & Ketentuan Jadwal Kepulangan Santri Mukim', '05 Dzulhijjah 1447 H', 'Maklumat Resmi', 'Pengurus pusat menerbitkan surat edaran resmi terkait regulasi penjemputan santri oleh orang tua/mahram kandung menjelang hari raya Idul Adha.\n\nSantri diperkenankan libur selama 7 hari kalender dan wajib kembali ke komplek kamar asrama tepat waktu guna menghindari sanksi ta\'zir kedisiplinan.')">
+                    <div>
+                        <div class="h-48 bg-emerald-900/5 flex items-center justify-center text-emerald-900/20 relative">
+                            <i class="fa-regular fa-image text-3xl group-hover:scale-105 transition duration-300"></i>
+                            <span class="absolute top-4 left-4 bg-emerald-900 text-amber-400 text-[10px] font-bold px-2.5 py-1 rounded-md border border-amber-500/20">Maklumat</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-[11px] text-gray-400 flex items-center gap-2 mb-2 font-semibold">
+                                <span><i class="fa-regular fa-calendar mr-1 text-amber-500"></i> 05 Dzulhijjah 1447 H</span>
+                            </div>
+                            <h4 class="font-serif font-bold text-emerald-950 text-base mb-2 group-hover:text-amber-600 transition line-clamp-2 leading-snug">
+                                Maklumat Libur Idul Adha & Ketentuan Jadwal Kepulangan Santri Mukim
+                            </h4>
+                            <p class="text-gray-500 text-xs leading-relaxed font-light line-clamp-3">
+                                Pengurus pusat menerbitkan surat edaran resmi terkait regulasi penjemputan santri oleh orang tua/mahram kandung...
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2 text-xs font-bold text-emerald-900 group-hover:text-amber-600 flex items-center gap-1">
+                        Iqra' Selengkapnya <i class="fa-solid fa-arrow-right-long text-[10px] mt-0.5"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- POP-UP MODAL WARTA ISLAMI -->
+    <div id="islamicNewsModal" class="fixed inset-0 z-50 hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <!-- Overlay Latar Belakang Blur Sempurna -->
+            <div class="fixed inset-0 transition-opacity bg-emerald-950/40 bg-opacity-60 backdrop-blur-sm" onclick="closeIslamicNewsModal()"></div>
+
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+            <!-- Konten Box Artikel (Gaya Islami dengan border emas halus) -->
+            <div class="inline-block overflow-hidden text-left align-bottom transition-all transform bg-white rounded-2xl shadow-2xl sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full border-2 border-amber-500/20">
+                
+                <!-- Gambar Banner Atas -->
+                <div class="h-60 bg-emerald-900/5 flex items-center justify-center text-emerald-900/20 relative">
+                    <i class="fa-regular fa-image text-5xl"></i>
+                    <!-- Tombol Tutup Silang Pojok Atas -->
+                    <button onclick="closeIslamicNewsModal()" class="absolute top-4 right-4 bg-emerald-950/60 hover:bg-emerald-950/80 text-white w-8 h-8 rounded-full flex items-center justify-center transition focus:outline-none z-10">
+                        <i class="fa-solid fa-xmark text-sm"></i>
+                    </button>
+                </div>
+                
+                <!-- Tubuh Artikel -->
+                <div class="p-6 md:p-8">
+                    <!-- Meta Tag Atas -->
+                    <div class="text-[11px] text-gray-400 flex items-center gap-3 mb-3 font-semibold">
+                        <span id="modalWartaDate"><i class="fa-regular fa-calendar mr-1 text-amber-500"></i> Tanggal Hijriah</span>
+                        <span id="modalWartaCategory" class="text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded font-bold border border-amber-500/10">Kategori</span>
+                    </div>
+                    
+                    <!-- Judul Artikel -->
+                    <h3 class="font-serif text-lg md:text-xl font-bold text-emerald-950 tracking-wide mb-4 leading-snug" id="modalWartaTitle">Judul Lengkap Berita Islami</h3>
+                    
+                    <!-- Paragraf Inti Artikel -->
+                    <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-light whitespace-pre-line" id="modalWartaContent">Isi warta komplit ma'had...</p>
+                </div>
+
+                <!-- Footer Penutup Modal -->
+                <div class="bg-[#fcfbf7] px-6 py-4 flex justify-end rounded-b-2xl border-t border-emerald-900/5">
+                    <button type="button" onclick="closeIslamicNewsModal()" class="w-full sm:w-auto bg-emerald-900 hover:bg-emerald-800 text-amber-300 border border-amber-500/20 text-xs font-bold px-5 py-2.5 rounded-xl transition focus:outline-none">
+                        Selesai Membaca
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-b from-emerald-950 to-[#03140d] text-gray-400 text-xs py-16 px-4 border-t-4 border-amber-500">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center text-emerald-950 text-sm font-bold">
+                        <i class="fa-solid fa-mosque"></i>
+                    </div>
+                    <h4 class="text-white font-serif font-bold text-sm tracking-wider uppercase">Darussalam Ma'had</h4>
+                </div>
+                <p class="leading-relaxed text-gray-400 font-light">
+                    Membina akhlak mulia dan menegakkan panji-panji keilmuan syariat Islam yang luhur demi kemaslahatan umat dunia dan akhirat.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-amber-400 font-serif font-bold text-sm mb-4 tracking-wider uppercase">Menu Pintas</h4>
+                <ul class="space-y-2.5 font-medium">
+                    <li><a href="index.html" class="hover:text-white hover:underline transition flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-amber-500"></i> Beranda Utama</a></li>
+                    <li><a href="profile.html" class="hover:text-white hover:underline transition flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-amber-500"></i> Tarikh Ma'had</a></li>
+                    <li><a href="madrasah.html" class="hover:text-white hover:underline transition flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[8px] text-amber-500"></i> Manhaj Madrasah</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-amber-400 font-serif font-bold text-sm mb-4 tracking-wider uppercase">Biro Sekretariat</h4>
+                <p class="leading-relaxed mb-3 font-light">
+                    <i class="fa-solid fa-map-location-dot mr-2 text-amber-500"></i> Kampus Utama: Jl. Pendidikan No. 45, Tamalanrea, Kota Makassar, Sulawesi Selatan.
+                </p>
+                <p class="leading-relaxed font-light">
+                    <i class="fa-solid fa-phone mr-2 text-amber-500"></i> Telp/WA: +62 812-3456-7890
+                </p>
+            </div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto border-t border-emerald-900/60 pt-6 text-center text-gray-500 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p>&copy; 1447 - 2026 PP. Darussalam Makassar. Hak Cipta Dilindungi Undang-Undang.</p>
+            <p class="text-[10px] tracking-widest uppercase">Khidmat Media oleh <a href="#" class="text-amber-500 font-bold hover:underline">lagingoding.com</a></p>
+        </div>
+    </footer>
+
+    <!-- STICKY BUTTON WHATSAPP -->
+    <a href="https://wa.me/6281234567890" target="_blank" class="fixed bottom-6 right-6 bg-emerald-800 text-amber-300 w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl hover:bg-emerald-700 transition z-50 border border-amber-400">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- JAVASCRIPT LOGIKA POPUP ARTIKEL -->
+    <script>
+        function openIslamicNewsModal(title, date, category, content) {
+            const modal = document.getElementById('islamicNewsModal');
+            
+            document.getElementById('modalWartaTitle').innerText = title;
+            document.getElementById('modalWartaDate').innerHTML = '<i class="fa-regular fa-calendar mr-1 text-amber-500"></i> ' + date;
+            document.getElementById('modalWartaCategory').innerText = category;
+            document.getElementById('modalWartaContent').innerText = content;
+            
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeIslamicNewsModal() {
+            const modal = document.getElementById('islamicNewsModal');
+            modal.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+    </script>
+
+</body>
+</html>
