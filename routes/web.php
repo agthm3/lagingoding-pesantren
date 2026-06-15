@@ -11,6 +11,9 @@ use App\Http\Controllers\PengaturanTemaFiturController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\KelolaUserController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ProfilKontenController;
+use App\Http\Controllers\KontakController;
+use App\Http\Controllers\FaqController;
 
 Route::get('/', [PageController::class, 'index'])->name('home');
 Route::get('/profil', [PageController::class, 'profil'])->name('profil');
@@ -25,6 +28,24 @@ Route::post('/pendaftaran', [PageController::class, 'prosesPendaftaran'])->name(
 // Dashboard Menu
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
+Route::prefix('dashboard/kontak-masuk')->name('dashboard.kontak.')->group(function () {
+    Route::get('/', [KontakController::class, 'index'])->name('index');
+    Route::put('/update-info', [KontakController::class, 'updateInfo'])->name('update-info'); // BARIS BARU INI
+    Route::patch('/{id}/read', [KontakController::class, 'read'])->name('read');
+    Route::delete('/{id}', [KontakController::class, 'destroy'])->name('destroy');
+});
+
+Route::prefix('dashboard/faq')->name('dashboard.faq.')->group(function () {
+    Route::get('/', [FaqController::class, 'index'])->name('index');
+    Route::post('/', [FaqController::class, 'store'])->name('store');
+    Route::put('/{id}', [FaqController::class, 'update'])->name('update');
+    Route::delete('/{id}', [FaqController::class, 'destroy'])->name('destroy');
+});
+
+Route::prefix('dashboard/profil-konten')->name('dashboard.profil-konten.')->group(function () {
+    Route::get('/', [ProfilKontenController::class, 'index'])->name('index');
+    Route::put('/', [ProfilKontenController::class, 'update'])->name('update');
+});
 
 Route::prefix('dashboard/pendaftaran')->name('dashboard.pendaftaran.')->group(function () {
     Route::get('/', [PendaftaranController::class, 'index'])->name('index');

@@ -88,21 +88,23 @@
                 <div id="formSection3" class="p-6 md:p-8 space-y-5 hidden">
                     <div class="border-b border-emerald-900/10 pb-3">
                         <h3 class="font-serif text-base font-bold text-emerald-950">Langkah 3: Unggah Berkas Lampiran Syarat</h3>
-                        <p class="text-xs text-gray-400 font-light mt-0.5">Ekstensi dokumen valid: .PDF, .JPG, atau .PNG (Kapasitas batas berkas maks 2 MegaByte).</p>
+                        <p class="text-xs text-rose-600 font-medium mt-0.5">Ekstensi valid: .PDF, .JPG, .JPEG, atau .PNG (Kapasitas batas berkas MAKSIMAL 1 MegaByte).</p>
                     </div>
 
                     <div class="space-y-4">
                         <div class="sm:grid sm:grid-cols-3 sm:gap-4 items-center border-b border-gray-100 pb-3">
                             <label class="block text-xs font-bold text-emerald-950 mb-1 sm:mb-0">Salinan Kartu Keluarga (KK) *</label>
                             <div class="sm:col-span-2">
-                                <input type="file" id="input_berkas_kk" name="berkas_kk" class="text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-emerald-900 file:text-amber-400 hover:file:bg-emerald-800 cursor-pointer transition">
+                                <input type="file" id="input_berkas_kk" name="berkas_kk" accept=".pdf,.jpg,.jpeg,.png" class="text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-emerald-900 file:text-amber-400 hover:file:bg-emerald-800 cursor-pointer transition">
+                                <span id="error_kk" class="text-[11px] text-rose-600 font-medium block mt-1 hidden">Ukuran berkas KK melebihi 1 MB!</span>
                             </div>
                         </div>
 
                         <div class="sm:grid sm:grid-cols-3 sm:gap-4 items-center border-b border-gray-100 pb-3">
                             <label class="block text-xs font-bold text-emerald-950 mb-1 sm:mb-0">Salinan Akta Kelahiran *</label>
                             <div class="sm:col-span-2">
-                                <input type="file" id="input_berkas_akta" name="berkas_akta" class="text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-emerald-900 file:text-amber-400 hover:file:bg-emerald-800 cursor-pointer transition">
+                                <input type="file" id="input_berkas_akta" name="berkas_akta" accept=".pdf,.jpg,.jpeg,.png" class="text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-emerald-900 file:text-amber-400 hover:file:bg-emerald-800 cursor-pointer transition">
+                                <span id="error_akta" class="text-[11px] text-rose-600 font-medium block mt-1 hidden">Ukuran berkas Akta melebihi 1 MB!</span>
                             </div>
                         </div>
                     </div>
@@ -131,9 +133,28 @@
 
     <script>
         let currentIslamicStep = 1;
+        const MAX_FILE_SIZE = 1 * 1024 * 1024; // Konversi 1 Megabyte ke Bytes
+
+        // Realtime checking saat user memilih berkas untuk feedback instan
+        document.getElementById('input_berkas_kk').addEventListener('change', function() {
+            const errSpan = document.getElementById('error_kk');
+            if (this.files[0] && this.files[0].size > MAX_FILE_SIZE) {
+                errSpan.classList.remove('hidden');
+            } else {
+                errSpan.classList.add('hidden');
+            }
+        });
+
+        document.getElementById('input_berkas_akta').addEventListener('change', function() {
+            const errSpan = document.getElementById('error_akta');
+            if (this.files[0] && this.files[0].size > MAX_FILE_SIZE) {
+                errSpan.classList.remove('hidden');
+            } else {
+                errSpan.classList.add('hidden');
+            }
+        });
 
         function navigateIslamicStep(direction) {
-            // Validasi Input Wajib Sebelum Pindah Tahap
             if (direction === 1) {
                 if (currentIslamicStep === 1) {
                     if (!document.getElementById('input_nama_santri').value || !document.getElementById('input_jenjang').value || !document.getElementById('input_asal_daerah').value || !document.getElementById('input_tanggal_lahir').value) {
@@ -146,19 +167,31 @@
                         return;
                     }
                 } else if (currentIslamicStep === 3) {
-                    // Konfirmasi Akhir Eksekusi Pengiriman Form
-                    if (!document.getElementById('input_berkas_kk').value || !document.getElementById('input_berkas_akta').value) {
+                    const berkasKK = document.getElementById('input_berkas_kk');
+                    const berkasAkta = document.getElementById('input_berkas_akta');
+
+                    if (!berkasKK.value || !berkasAkta.value) {
                         Swal.fire({ icon: 'warning', title: 'Berkas Kosong', text: 'Kedua berkas dokumen syarat (KK & Akta) wajib dilampirkan.', confirmButtonColor: '#064e3b', customClass: { popup: 'rounded-2xl' } });
                         return;
                     }
+
+                    // VALIDASI UKURAN FILE FRONTEND (MAKS 1MB) SEBELUM POST FORM
+                    if (berkasKK.files[0].size > MAX_FILE_SIZE) {
+                        Swal.fire({ icon: 'error', title: 'Berkas KK Terlalu Besar', text: 'Ukuran file Kartu Keluarga Anda melebihi batas 1 Megabyte. Harap kompres terlebih dahulu.', confirmButtonColor: '#e11d48', customClass: { popup: 'rounded-2xl' } });
+                        return;
+                    }
+
+                    if (berkasAkta.files[0].size > MAX_FILE_SIZE) {
+                        Swal.fire({ icon: 'error', title: 'Berkas Akta Terlalu Besar', text: 'Ukuran file Akta Kelahiran Anda melebihi batas 1 Megabyte. Harap kompres terlebih dahulu.', confirmButtonColor: '#e11d48', customClass: { popup: 'rounded-2xl' } });
+                        return;
+                    }
+
                     if (!document.getElementById('checkIkrar').checked) {
                         Swal.fire({ icon: 'warning', title: 'Ikrar Belum Disetujui', text: 'Anda wajib menyetujui pernyataan amanah pertanggungjawaban data.', confirmButtonColor: '#064e3b', customClass: { popup: 'rounded-2xl' } });
                         return;
                     }
                     
-                    // ==========================================
-                    // 1. POP-UP LOADING PROSES SAAT KIRIM DATA
-                    // ==========================================
+                    // POP-UP LOADING PROSES SAAT KIRIM DATA
                     Swal.fire({
                         title: 'Memproses Pendaftaran',
                         html: 'Mohon tunggu sejenak, data dan berkas lampiran sedang diunggah ke sistem...',
@@ -171,7 +204,6 @@
                         customClass: { popup: 'rounded-2xl' }
                     });
 
-                    // Trigger Submit Form Asli ke Backend Laravel
                     document.getElementById('islamicPpdbForm').submit();
                     return;
                 }
@@ -216,9 +248,7 @@
             }
         }
 
-        // ==========================================
-        // 2. POP-UP NOTIFIKASI BERHASIL (DARI CONTROLLER)
-        // ==========================================
+        // POP-UP NOTIFIKASI BERHASIL
         @if(session('success_ppdb'))
             Swal.fire({
                 icon: 'success',

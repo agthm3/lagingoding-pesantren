@@ -74,7 +74,9 @@
                         </div>
                         <div>
                             <h5 class="font-bold text-emerald-950 mb-0.5">Alamat Komplek Ma'had</h5>
-                            <p class="text-gray-500 leading-relaxed font-light">Jl. Pendidikan No. 45, Kecamatan Tamalanrea, Kota Makassar, Sulawesi Selatan.</p>
+                            <p class="text-gray-500 leading-relaxed font-light">
+                                {{ $profilSettings['kontak_alamat'] ?? 'Jl. Pendidikan No. 45, Kecamatan Tamalanrea, Kota Makassar, Sulawesi Selatan.' }}
+                            </p>
                         </div>
                     </div>
 
@@ -84,8 +86,8 @@
                         </div>
                         <div>
                             <h5 class="font-bold text-emerald-950 mb-0.5">Hubungan Telepon Resmi</h5>
-                            <p class="text-gray-500 font-light">+62 812-3456-7890 (Biro Tata Usaha)</p>
-                            <p class="text-gray-500 font-light">+62 812-9876-5432 (Layanan Maklumat PPDB)</p>
+                            <p class="text-gray-500 font-light">{{ $profilSettings['kontak_telp_tu'] ?? '+62 812-3456-7890' }} (Biro Tata Usaha)</p>
+                            <p class="text-gray-500 font-light">{{ $profilSettings['kontak_telp_ppdb'] ?? '+62 812-9876-5432' }} (Layanan Maklumat PPDB)</p>
                         </div>
                     </div>
 
@@ -95,7 +97,7 @@
                         </div>
                         <div>
                             <h5 class="font-bold text-emerald-950 mb-0.5">Surat Elektronik</h5>
-                            <p class="text-gray-500 font-light">sekretariat@darussalam.mahad.id</p>
+                            <p class="text-gray-500 font-light">{{ $profilSettings['kontak_email'] ?? 'sekretariat@darussalam.mahad.id' }}</p>
                         </div>
                     </div>
                 </div>
@@ -103,12 +105,11 @@
                 <div class="bg-gradient-to-br from-emerald-950 to-emerald-900 text-white rounded-2xl p-6 shadow-md space-y-3 relative overflow-hidden border border-amber-500/20">
                     <div class="absolute -right-6 -bottom-6 text-emerald-900/30 text-7xl"><i class="fa-solid fa-mosque"></i></div>
                     <h4 class="font-serif font-bold text-sm tracking-wider uppercase text-amber-400">Jam Khidmah Pelayanan</h4>
-                    <div class="text-xs space-y-2 border-t border-emerald-800/40 pt-3 relative z-10 font-light">
-                        <div class="flex justify-between border-b border-emerald-950/40 pb-2">
-                            <span>Sabtu - Kamis</span>
-                            <span class="font-bold text-amber-400">07.30 - 14.30 WITA</span>
+                    <div class="text-xs border-t border-emerald-800/40 pt-3 relative z-10 font-light">
+                        <div class="p-2 bg-emerald-900/50 border border-emerald-800 rounded-xl text-center font-bold text-amber-400">
+                            {{ $profilSettings['kontak_jam_kerja'] ?? 'Sabtu - Kamis (07.30 - 14.30 WITA)' }}
                         </div>
-                        <div class="flex justify-between text-emerald-300">
+                        <div class="flex justify-between text-emerald-300 text-[10px] mt-2 px-1">
                             <span>Hari Sunah (Jumat)</span>
                             <span class="font-bold uppercase tracking-wider text-red-400">Libur Kantor</span>
                         </div>
@@ -119,10 +120,10 @@
         </div>
     </section>
 
-    <!-- SEKSI GOOGLE MAPS EMBED -->
+    <!-- SEKSI GOOGLE MAPS EMBED DINAMIS -->
     <section class="w-full h-96 bg-gray-200 border-t-2 border-b-2 border-amber-500/20">
         <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m4!1s0x2dbefec0!2sMakassar%2C+South+Sulawesi!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbef02772591605%3A0x3030bfbcaf70100!2sMakassar%2C+Makassar+City%2C+South+Sulawesi!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid" 
+            src="{{ $profilSettings['kontak_gmaps'] ?? 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m4!1s0x2dbefec0!2sMakassar%2C+South+Sulawesi!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbef02772591605%3A0x3030bfbcaf70100!2sMakassar%2C+Makassar+City%2C+South+Sulawesi!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid' }}" 
             class="w-full h-full" 
             style="border:0;" 
             allowfullscreen="" 

@@ -34,6 +34,20 @@
                 </a>
 
                 <span class="px-3 text-[10px] text-slate-400 uppercase tracking-widest block pt-5 mb-2">Operasional Pondok</span>
+                <a href="{{ route('dashboard.kontak.index') }}" class="flex items-center justify-between px-3 py-2.5 rounded-xl transition border {{ request()->routeIs('dashboard.kontak.index') ? 'bg-indigo-50 text-indigo-950 border-indigo-100' : 'hover:bg-slate-50 text-slate-700 border-transparent' }}">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-regular fa-envelope text-sm {{ request()->routeIs('dashboard.kontak.index') ? 'text-indigo-600' : 'text-slate-400' }}"></i> 
+                        <span>Pesan Kontak Masuk</span>
+                    </div>
+                    @if(isset($unreadKontakCount) && $unreadKontakCount > 0)
+                        <span class="bg-red-500 text-white text-[10px] font-black px-2 py-0.5 rounded-full animate-pulse shadow-sm shadow-red-400/50">
+                            {{ $unreadKontakCount }}
+                        </span>
+                    @endif
+                </a>
+                <a href="{{ route('dashboard.profil-konten.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl transition border {{ request()->routeIs('dashboard.profil-konten.index') ? 'bg-indigo-50 text-indigo-950 border-indigo-100' : 'hover:bg-slate-50 text-slate-700 border-transparent' }}">
+                    <i class="fa-solid fa-mosque text-sm {{ request()->routeIs('dashboard.profil-konten.index') ? 'text-indigo-600' : 'text-slate-400' }}"></i> Kelola Konten Profil
+                </a>
                 <a href="{{ route("dashboard.pendaftaran.index") }}" class="flex items-center gap-3 hover:bg-slate-50 text-slate-700 px-3 py-2.5 rounded-xl transition">
                     <i class="fa-solid fa-graduation-cap text-sm text-slate-400"></i> Pendaftar PPDB
                 </a>
@@ -49,7 +63,9 @@
                 <a href="{{ route('dashboard.prestasi.index') }}" class="flex items-center gap-3 hover:bg-slate-50 text-slate-700 px-3 py-2.5 rounded-xl transition">
                     <i class="fa-regular fa-building text-sm text-slate-400"></i> Prestasi
                 </a>
-
+                <a href="{{ route('dashboard.faq.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl transition border {{ request()->routeIs('dashboard.faq.index') ? 'bg-indigo-50 text-indigo-950 border-indigo-100' : 'hover:bg-slate-50 text-slate-700 border-transparent' }}">
+                    <i class="fa-regular fa-comments text-sm {{ request()->routeIs('dashboard.faq.index') ? 'text-indigo-600' : 'text-slate-400' }}"></i> Kelola Istifham (FAQ)
+                </a>
                 <!-- MENU KHUSUS KONFIGURASI SUPERADMIN -->
                 <span class="px-3 text-[10px] text-indigo-600 uppercase tracking-widest block pt-6 mb-2 border-t border-slate-100 mt-4">Pusat Superadmin</span>
                 <a href="{{ route('dashboard.pengaturan.index') }}" class="flex items-center gap-3 hover:bg-slate-50 text-slate-700 px-3 py-2.5 rounded-xl transition">

@@ -10,7 +10,6 @@
                 <p class="text-emerald-300 text-xs mt-1">Sistem kurikulum, jenjang lembaga, dan aktivitas harian santri</p>
             </div>
             <div class="text-xs text-emerald-400 bg-emerald-900/50 px-4 py-2 rounded border border-emerald-800/60">
-                <!-- Perbaikan Link Menggunakan Route Laravel -->
                 <a href="{{ route('home') }}" class="hover:text-white transition">Beranda</a> 
                 <span class="mx-2 text-gray-500">/</span> 
                 <span class="text-white">Pendidikan</span>
@@ -18,7 +17,7 @@
         </div>
     </section>
 
-    <!-- Jenjang Pendidikan (Dinamis / Berulang) -->
+    <!-- Jenjang Pendidikan (Dinamis) -->
     <section class="py-16 px-4 bg-white">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12">
@@ -38,7 +37,7 @@
                         <h4 class="font-bold text-gray-900 text-lg mb-2">Madrasah Tsanawiyah (MTs)</h4>
                         <p class="text-xs text-emerald-700 font-medium uppercase tracking-wider mb-3">Akreditasi A • Masa Studi 3 Tahun</p>
                         <p class="text-gray-600 text-xs leading-relaxed mb-4">
-                            Pendidikan setingkat SMP yang mengintegrasikan kurikulum dasar Kementerian Agama dengan pendalaman kitab khazanah Islam klasik tingkat dasar serta bimbingan ibadah harian.
+                            {{ $pendidikanSettings['pendidikan_mts'] ?? 'Pendidikan setingkat SMP yang mengintegrasikan kurikulum dasar Kementerian Agama dengan pendalaman kitab khazanah Islam klasik tingkat dasar serta bimbingan ibadah harian.' }}
                         </p>
                     </div>
                     <div class="border-t border-gray-200/60 pt-4 mt-2">
@@ -60,7 +59,7 @@
                         <h4 class="font-bold text-gray-900 text-lg mb-2">Madrasah Aliyah (MA)</h4>
                         <p class="text-xs text-emerald-700 font-medium uppercase tracking-wider mb-3">Akreditasi A • Jurusan Keagamaan / IPA</p>
                         <p class="text-gray-600 text-xs leading-relaxed mb-4">
-                            Pendidikan setingkat SMA yang mempersiapkan santri untuk melanjutkan ke perguruan tinggi nasional maupun internasional (Timur Tengah) dengan penguasaan bahasa Arab aktif.
+                            {{ $pendidikanSettings['pendidikan_ma'] ?? 'Pendidikan setingkat SMA yang mempersiapkan santri untuk melanjutkan ke perguruan tinggi nasional maupun internasional (Timur Tengah) dengan penguasaan bahasa Arab aktif.' }}
                         </p>
                     </div>
                     <div class="border-t border-gray-200/60 pt-4 mt-2">
@@ -82,7 +81,7 @@
                         <h4 class="font-bold text-gray-900 text-lg mb-2">Tahfidzul Qur'an</h4>
                         <p class="text-xs text-emerald-700 font-medium uppercase tracking-wider mb-3">Program Unggulan • Target 30 Juz</p>
                         <p class="text-gray-600 text-xs leading-relaxed mb-4">
-                            Program khusus berfokus pada hafalan Al-Qur'an dengan metode talaqqi langsung di bawah bimbingan para huffadz bersanad, dilengkapi dengan ilmu tajwid dan ghorib.
+                            {{ $pendidikanSettings['pendidikan_tahfidz'] ?? 'Program khusus berfokus pada hafalan Al-Qur\'an dengan metode talaqqi langsung di bawah bimbingan para huffadz bersanad, dilengkapi dengan ilmu tajwid dan ghorib.' }}
                         </p>
                     </div>
                     <div class="border-t border-gray-200/60 pt-4 mt-2">
@@ -96,7 +95,7 @@
                 </div>
             </div>
 
-            {{-- INTEGRASI SAKLAR FITUR: DOWNLOAD CENTE BROSUR KURIKULUM --}}
+            {{-- SAKLAR FITUR: DOWNLOAD BROSUR KURIKULUM --}}
             @if($setting->feature_download)
             <div class="mt-12 p-6 bg-emerald-50 rounded-xl border border-emerald-100 flex flex-col sm:flex-row justify-between items-center gap-4 max-w-3xl mx-auto">
                 <div class="flex items-center gap-4 text-center sm:text-left flex-col sm:flex-row">
@@ -106,15 +105,21 @@
                         <p class="text-xs text-gray-500">Dapatkan rincian silabus pembelajaran dan daftar kitab pegangan santri.</p>
                     </div>
                 </div>
-                <a href="#" class="bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold px-4 py-2.5 rounded transition whitespace-nowrap shadow-sm">
-                    <i class="fa-solid fa-download mr-1"></i> Unduh Brosur (.PDF)
-                </a>
+                @if(isset($pendidikanSettings['file_brosur']) && !empty($pendidikanSettings['file_brosur']))
+                    <a href="{{ asset('storage/' . $pendidikanSettings['file_brosur']) }}" download class="bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold px-4 py-2.5 rounded transition whitespace-nowrap shadow-sm">
+                        <i class="fa-solid fa-download mr-1"></i> Unduh Brosur (.PDF)
+                    </a>
+                @else
+                    <a href="#" onclick="alert('File brosur belum diunggah oleh Admin.'); return false;" class="bg-gray-400 text-white text-xs font-semibold px-4 py-2.5 rounded transition whitespace-nowrap shadow-sm cursor-not-allowed">
+                        <i class="fa-solid fa-download mr-1"></i> Belum Tersedia
+                    </a>
+                @endif
             </div>
             @endif
         </div>
     </section>
 
-    <!-- Jadwal Aktivitas Harian Santri -->
+    <!-- Jadwal Aktivitas Harian Santri Dinamis -->
     <section class="py-16 px-4 bg-gray-50 border-t border-gray-100">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-10">
@@ -127,38 +132,30 @@
             <!-- Timeline Table-Style Layout -->
             <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                 <div class="divide-y divide-gray-100">
-                    <!-- Item 1 -->
+                    @php
+                        $fallbackWaktu = [1 => '04.00 - 05.15', 2 => '07.15 - 12.00', 3 => '14.00 - 15.15', 4 => '18.30 - 20.00'];
+                        $fallbackJudul = [1 => 'Shalat Subuh Berjamaah & Khitabah', 2 => 'KBM Madrasah Formal', 3 => 'Kajian Kitab Kuning (Madrasah Diniyah)', 4 => 'Maghrib Mengaji & Isya Berjamaah'];
+                        $fallbackTeks = [
+                            1 => 'Dilanjutkan dengan membaca wirid pagi dan setoran hafalan Al-Qur\'an / bait muhafadhah.',
+                            2 => 'Pembelajaran kurikulum nasional (Kemenag/Kemendikbud) di ruang kelas masing-masing jenjang.',
+                            3 => 'Pendalaman materi fiqih, nahwu, sharaf, aqidah, dan akhlak menggunakan metode bandongan/sorogan.',
+                            4 => 'Pendalaman hafalan juz individu dipandu langsung oleh ustadz pembimbing halaqah.'
+                        ];
+                    @endphp
+
+                    @for($i = 1; $i <= 4; $i++)
                     <div class="p-4 sm:grid sm:grid-cols-4 sm:gap-4 items-center">
-                        <div class="font-bold text-emerald-800 text-sm mb-1 sm:mb-0"><i class="fa-regular fa-clock mr-1.5 text-emerald-600"></i> 04.00 - 05.15</div>
+                        <div class="font-bold text-emerald-800 text-sm mb-1 sm:mb-0">
+                            <i class="fa-regular fa-clock mr-1.5 text-emerald-600"></i> {{ $pendidikanSettings["agenda_{$i}_waktu"] ?? $fallbackWaktu[$i] }}
+                        </div>
                         <div class="sm:col-span-3">
-                            <h5 class="font-bold text-gray-800 text-sm">Shalat Subuh Berjamaah & Khitabah</h5>
-                            <p class="text-xs text-gray-500 mt-0.5">Dilanjutkan dengan membaca wirid pagi dan setoran hafalan Al-Qur'an / bait muhafadhah.</p>
+                            <h5 class="font-bold text-gray-800 text-sm">{{ $pendidikanSettings["agenda_{$i}_judul"] ?? $fallbackJudul[$i] }}</h5>
+                            <p class="text-xs text-gray-500 mt-0.5">
+                                {{ $pendidikanSettings["agenda_{$i}_teks"] ?? $fallbackTeks[$i] }}
+                            </p>
                         </div>
                     </div>
-                    <!-- Item 2 -->
-                    <div class="p-4 sm:grid sm:grid-cols-4 sm:gap-4 items-center">
-                        <div class="font-bold text-emerald-800 text-sm mb-1 sm:mb-0"><i class="fa-regular fa-clock mr-1.5 text-emerald-600"></i> 07.15 - 12.00</div>
-                        <div class="sm:col-span-3">
-                            <h5 class="font-bold text-gray-800 text-sm">KBM Madrasah Formal</h5>
-                            <p class="text-xs text-gray-500 mt-0.5">Pembelajaran kurikulum nasional (Kemenag/Kemendikbud) di ruang kelas masing-masing jenjang.</p>
-                        </div>
-                    </div>
-                    <!-- Item 3 -->
-                    <div class="p-4 sm:grid sm:grid-cols-4 sm:gap-4 items-center">
-                        <div class="font-bold text-emerald-800 text-sm mb-1 sm:mb-0"><i class="fa-regular fa-clock mr-1.5 text-emerald-600"></i> 14.00 - 15.15</div>
-                        <div class="sm:col-span-3">
-                            <h5 class="font-bold text-gray-800 text-sm">Kajian Kitab Kuning (Madrasah Diniyah)</h5>
-                            <p class="text-xs text-gray-500 mt-0.5">Pendalaman materi fiqih, nahwu, sharaf, aqidah, dan akhlak menggunakan metode bandongan/sorogan.</p>
-                        </div>
-                    </div>
-                    <!-- Item 4 -->
-                    <div class="p-4 sm:grid sm:grid-cols-4 sm:gap-4 items-center">
-                        <div class="font-bold text-emerald-800 text-sm mb-1 sm:mb-0"><i class="fa-regular fa-clock mr-1.5 text-emerald-600"></i> 18.30 - 20.00</div>
-                        <div class="sm:col-span-3">
-                            <h5 class="font-bold text-gray-800 text-sm">Maghrib Mengaji & Isya Berjamaah</h5>
-                            <p class="text-xs text-gray-500 mt-0.5">Pendalaman hafalan juz individu dipandu langsung oleh ustadz pembimbing halaqah.</p>
-                        </div>
-                    </div>
+                    @endfor
                 </div>
             </div>
         </div>
