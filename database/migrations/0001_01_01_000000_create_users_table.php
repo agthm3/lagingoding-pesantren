@@ -18,9 +18,19 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            
+            // Kolom kustom tambahan (opsional tapi disarankan)
+            $table->string('phone_number')->nullable(); // Nomor WA staf
+            $table->boolean('is_active')->default(true); // Status aktif/tangguhkan
+            $table->timestamp('last_login_at')->nullable(); // Mencatat login terakhir
+            
             $table->timestamps();
+            
+            // Catatan: Kolom 'role' tidak perlu dibuat di sini 
+            // karena Spatie akan mengelolanya di tabel relasional terpisah (model_has_roles).
         });
 
+        // (Biarkan tabel password_reset_tokens dan sessions bawaan tetap ada di bawahnya)
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');

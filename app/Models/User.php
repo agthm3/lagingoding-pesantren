@@ -6,10 +6,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles; // 1. Import Trait Spatie
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasRoles; // 2. Tambahkan HasRoles di sini
 
     /**
      * The attributes that are mass assignable.
@@ -20,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone_number',
+        'is_active',
+        'last_login_at',
     ];
 
     /**
@@ -42,6 +46,8 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_active' => 'boolean',
+            'last_login_at' => 'datetime',
         ];
     }
 }
