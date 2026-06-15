@@ -15,6 +15,12 @@ use App\Http\Controllers\PageController;
 Route::get('/', [PageController::class, 'index'])->name('home');
 Route::get('/profil', [PageController::class, 'profil'])->name('profil');
 Route::get('/pendidikan', [PageController::class, 'pendidikan'])->name('pendidikan');
+Route::get('/berita', [PageController::class, 'berita'])->name('berita');
+Route::get('/galeri', [PageController::class, 'galeri'])->name('galeri');
+Route::get('/kontak', [PageController::class, 'kontak'])->name('kontak'); // Tampil Halaman
+Route::post('/kontak', [PageController::class, 'kirimPesan'])->name('kontak.kirim');
+Route::get('/pendaftaran', [PageController::class, 'pendaftaran'])->name('pendaftaran');
+Route::post('/pendaftaran', [PageController::class, 'prosesPendaftaran'])->name('pendaftaran.store');
 
 // Dashboard Menu
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');

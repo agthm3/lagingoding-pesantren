@@ -46,13 +46,13 @@
                 <a href="{{ route('profil') }}" class="{{ request()->routeIs('profil') ? 'text-amber-600 border-b-2 border-amber-500 pb-1' : 'hover:text-amber-600 transition' }}">Profil Ma'had</a>
                 <!-- Cari bagian navbar link Madrasah lalu ubah parameternya: -->
 <a href="{{ route('pendidikan') }}" class="{{ request()->routeIs('pendidikan') ? 'text-amber-600 border-b-2 border-amber-500 pb-1' : 'hover:text-amber-600 transition' }}">Madrasah</a>
-                <a href="#" class="hover:text-amber-600 transition">Kabar Kegiatan</a>
-                <a href="#" class="hover:text-amber-600 transition">Galeri Media</a>
-                <a href="#" class="hover:text-amber-600 transition">Hubungi</a>
+                <a href="{{ route('berita') }}" class="{{ request()->routeIs('berita') ? 'text-amber-600 border-b-2 border-amber-500 pb-1' : 'hover:text-amber-600 transition' }}">Kabar Kegiatan</a>
+                <a href="{{ route('galeri') }}" class="{{ request()->routeIs('galeri') ? 'text-amber-600 border-b-2 border-amber-500 pb-1' : 'hover:text-amber-600 transition' }}">Galeri Media</a>
+                <a href="{{ route('kontak') }}" class="{{ request()->routeIs('kontak') ? 'text-amber-600 border-b-2 border-amber-500 pb-1' : 'hover:text-amber-600 transition' }}">Hubungi</a>
                 
                 {{-- SAKLAR AKSES PAKET: MODUL PPDB ONLINE NAVIGASI --}}
                 @if ($setting->feature_ppdb)
-                <a href="#" class="bg-amber-500 hover:bg-amber-600 text-emerald-950 px-5 py-2 rounded-xl font-bold text-xs tracking-wider transition uppercase shadow border border-amber-400">
+                <a href="{{ route('pendaftaran') }}" class="bg-amber-500 hover:bg-amber-600 text-emerald-950 px-5 py-2 rounded-xl font-bold text-xs tracking-wider transition uppercase shadow border border-amber-400">
                     <i class="fa-solid fa-graduation-cap mr-1"></i> PPDB Online
                 </a>
                 @endif
