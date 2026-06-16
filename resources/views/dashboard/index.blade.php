@@ -90,7 +90,7 @@
                                 @empty
                                 <tr>
                                     <td colspan="4" class="p-4 text-center italic text-slate-400 font-medium">Belum ada berkas formulir PPDB yang masuk.</td>
-                                endtr>
+                                <tr>
                                 @endforelse
                             </tbody>
                         </table>
@@ -109,7 +109,7 @@
                                 <i class="fa-solid fa-palette text-indigo-600 text-sm"></i>
                                 <span class="text-slate-600">Wajah Tema</span>
                             </div>
-                            <span class="text-slate-900 font-bold bg-white border border-slate-200 px-2.5 py-1 rounded-lg shadow-sm">Islami Tradisional</span>
+                            <span class="text-slate-900 font-bold bg-white border border-slate-200 px-2.5 py-1 rounded-lg shadow-sm capitalize">{{ $setting->active_theme == 'islami' ? 'Islami Tradisional' : $setting->active_theme }}</span>
                         </div>
                         
                         <div class="p-3 rounded-xl border border-slate-100 bg-slate-50/50 flex items-center justify-between">
@@ -117,19 +117,21 @@
                                 <i class="fa-solid fa-shield-halved text-emerald-600 text-sm"></i>
                                 <span class="text-slate-600">Status Lisensi</span>
                             </div>
-                            <span class="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded">SaaS Full Pack</span>
+                            <span class="font-bold px-2.5 py-1 text-[11px] rounded-lg shadow-sm {{ $badgeClass }}">
+                                {{ $licenseStatusText }}
+                            </span>
                         </div>
 
                         <div class="pt-2">
                             <span class="text-[10px] font-bold uppercase text-slate-400 tracking-wider block mb-2">Aktivitas Terakhir</span>
                             <div class="space-y-2.5 border-l-2 border-slate-100 pl-3.5 text-[11px] font-medium text-slate-600">
                                 <div>
-                                    <p class="text-slate-900 font-bold">Sistem berjalan optimal</p>
-                                    <span class="text-[10px] text-slate-400 block mt-0.5">Sekarang</span>
+                                    <p class="text-slate-900 font-bold">Masa Berlaku Sewa Sistem</p>
+                                    <span class="text-[10px] text-indigo-600 block mt-0.5 font-mono font-bold">Exp: {{ \Carbon\Carbon::parse($setting->license_expires_at)->translatedFormat('d M Y') }}</span>
                                 </div>
                                 <div>
                                     <p class="text-slate-900 font-bold">Koneksi Database MySQL Stabil</p>
-                                    <span class="text-[10px] text-slate-400 block mt-0.5">Port 3307 Aktif</span>
+                                    <span class="text-[10px] text-slate-400 block mt-0.5">Port 3306 Aktif</span>
                                 </div>
                             </div>
                         </div>

@@ -19,20 +19,20 @@ class PengaturanTemaFiturController extends Controller
     {
         $setting = Setting::first();
 
-        // Validasi input radio button
+        // Validasi input radio button & inputan tanggal baru
         $request->validate([
-            'active_theme' => 'required|in:formal,islami,modern'
+            'active_theme'        => 'required|in:formal,islami,modern',
+            'license_expires_at'  => 'required|date' // Validasi tanggal baru
         ]);
 
-        // Checkbox di HTML jika tidak dicentang tidak akan terkirim di Request, 
-        // jadi kita tangkap dengan logika $request->has()
         $setting->update([
-            'active_theme'     => $request->active_theme,
-            'feature_ppdb'     => $request->has('feature_ppdb'),
-            'feature_faq'      => $request->has('feature_faq'),
-            'feature_download' => $request->has('feature_download'),
+            'active_theme'        => $request->active_theme,
+            'feature_ppdb'        => $request->has('feature_ppdb'),
+            'feature_faq'         => $request->has('feature_faq'),
+            'feature_download'    => $request->has('feature_download'),
+            'license_expires_at'  => $request->license_expires_at, // Masukkan inputan ke database
         ]);
 
-        return back()->with('success', 'Konfigurasi tema dan fitur berhasil diperbarui!');
+        return back()->with('success', 'Konfigurasi tema dan parameter durasi lisensi berhasil diperbarui!');
     }
 }

@@ -15,7 +15,15 @@
             <form action="{{ route('dashboard.pengaturan.update') }}" method="POST" class="space-y-8 max-w-5xl w-full">
                 @csrf
                 @method('PUT')
-                
+                <section class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm space-y-4">
+                    <div class="border-t border-slate-100 pt-5 mt-4 max-w-md">
+                        <label class="block text-xs font-bold text-slate-700 mb-2">
+                            <i class="fa-solid fa-calendar-days mr-1 text-indigo-600"></i> Batas Akhir Tanggal Masa Aktif Lisensi SaaS *
+                        </label>
+                        <input type="date" name="license_expires_at" value="{{ $setting->license_expires_at }}" required class="w-full text-xs border border-slate-200 rounded-xl p-3 bg-slate-50 focus:outline-none focus:border-indigo-500 focus:bg-white font-mono font-bold text-slate-800 shadow-inner transition">
+                        <span class="text-[10px] text-slate-400 mt-1.5 block font-normal">Masukkan batas tanggal sewa domain/server. Ketika menyentuh H-7 batas ini, indikator dasbor utama akan berkedip kuning (Kritis).</span>
+                    </div>
+                </section>
                 <section class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm space-y-4">
                     <div>
                         <span class="text-[10px] font-bold uppercase tracking-widest text-indigo-600 block mb-0.5">Wajah Antarmuka Klien</span>

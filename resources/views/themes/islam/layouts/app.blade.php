@@ -9,7 +9,7 @@
 </head>
 <body class="bg-[#fcfbf7] text-gray-800 antialiased font-sans">
 
-    <div class="bg-gradient-to-r应用 from-emerald-950 via-emerald-900 to-emerald-950 text-white text-xs py-2.5 px-4 border-b border-amber-500/30">
+    <div class="bg-gradient-to-r from-emerald-950 via-emerald-900 to-emerald-950 text-white text-xs py-2.5 px-4 border-b border-amber-500/30">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
             <div class="flex items-center gap-4 text-gray-200">
                 <span><i class="fa-solid fa-clock mr-1.5 text-amber-400"></i> Hubungi Kami Aktif: Sabtu - Kamis</span>
@@ -26,7 +26,7 @@
         </div>
     </div>
 
-       <header class="bg-white sticky top-0 z-50 shadow-md border-b-4 border-emerald-800">
+    <header class="bg-white sticky top-0 z-50 shadow-md border-b-4 border-emerald-800">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
             
             <div class="flex items-center gap-3">
@@ -34,23 +34,22 @@
                     <i class="fa-solid fa-mosque"></i>
                 </div>
                 <div>
-                    <h1 class="font-serif font-bold text-xl text-emerald-900 leading-tight tracking-wide">PONDOK PESANTREN DARUSSALAM</h1>
-                    <p class="text-[10px] text-amber-600 font-bold tracking-widest uppercase flex items-center gap-1.5">
+                    <h1 class="font-serif font-bold text-sm md:text-xl text-emerald-900 leading-tight tracking-wide">PONDOK PESANTREN DARUSSALAM</h1>
+                    <p class="text-[9px] md:text-[10px] text-amber-600 font-bold tracking-widest uppercase flex items-center gap-1.5">
                         <i class="fa-solid fa-star text-[8px]"></i> Lembaga Pendidikan Salafiyah Syafi'iyah <i class="fa-solid fa-star text-[8px]"></i>
                     </p>
                 </div>
             </div>
 
+            <!-- DESKTOP NAVIGATION -->
             <nav class="hidden lg:flex items-center gap-6 font-semibold text-sm text-emerald-950">
                 <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'text-amber-600 border-b-2 border-amber-500 pb-1' : 'hover:text-amber-600 transition' }}">Beranda</a>
                 <a href="{{ route('profil') }}" class="{{ request()->routeIs('profil') ? 'text-amber-600 border-b-2 border-amber-500 pb-1' : 'hover:text-amber-600 transition' }}">Profil Ma'had</a>
-                <!-- Cari bagian navbar link Madrasah lalu ubah parameternya: -->
-<a href="{{ route('pendidikan') }}" class="{{ request()->routeIs('pendidikan') ? 'text-amber-600 border-b-2 border-amber-500 pb-1' : 'hover:text-amber-600 transition' }}">Madrasah</a>
+                <a href="{{ route('pendidikan') }}" class="{{ request()->routeIs('pendidikan') ? 'text-amber-600 border-b-2 border-amber-500 pb-1' : 'hover:text-amber-600 transition' }}">Madrasah</a>
                 <a href="{{ route('berita') }}" class="{{ request()->routeIs('berita') ? 'text-amber-600 border-b-2 border-amber-500 pb-1' : 'hover:text-amber-600 transition' }}">Kabar Kegiatan</a>
                 <a href="{{ route('galeri') }}" class="{{ request()->routeIs('galeri') ? 'text-amber-600 border-b-2 border-amber-500 pb-1' : 'hover:text-amber-600 transition' }}">Galeri Media</a>
                 <a href="{{ route('kontak') }}" class="{{ request()->routeIs('kontak') ? 'text-amber-600 border-b-2 border-amber-500 pb-1' : 'hover:text-amber-600 transition' }}">Hubungi</a>
                 
-                {{-- SAKLAR AKSES PAKET: MODUL PPDB ONLINE NAVIGASI --}}
                 @if ($setting->feature_ppdb)
                 <a href="{{ route('pendaftaran') }}" class="bg-amber-500 hover:bg-amber-600 text-emerald-950 px-5 py-2 rounded-xl font-bold text-xs tracking-wider transition uppercase shadow border border-amber-400">
                     <i class="fa-solid fa-graduation-cap mr-1"></i> PPDB Online
@@ -58,13 +57,51 @@
                 @endif
             </nav>
 
-            <button class="lg:hidden text-emerald-900 focus:outline-none">
+            <!-- TRIGGER BUTTON MOBILE (ID Ditambahkan Untuk JS Klik) -->
+            <button id="btnMobileToggle" class="lg:hidden text-emerald-900 focus:outline-none p-1">
                 <i class="fa-solid fa-bars-staggered text-2xl"></i>
             </button>
         </div>
     </header>
 
+    <!-- CONTAINER DRAWER MENU MOBILE (BARU) -->
+    <div id="mobileMenuOverlay" class="fixed inset-0 bg-emerald-950/40 backdrop-blur-sm z-50 hidden transition-all duration-300">
+        <div class="fixed top-0 right-0 bottom-0 w-72 bg-white shadow-2xl flex flex-col justify-between border-l border-emerald-800/10">
+            <div>
+                <!-- Header Drawer -->
+                <div class="p-4 flex items-center justify-between border-b border-gray-100 bg-slate-50">
+                    <span class="text-xs font-bold uppercase tracking-wider text-emerald-900 flex items-center gap-2">
+                        <i class="fa-solid fa-mosque"></i> Navigasi Portal
+                    </span>
+                    <button id="btnMobileClose" class="text-gray-400 hover:text-red-500 text-lg p-1 transition">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <!-- Link List Drawer -->
+                <nav class="p-4 flex flex-col gap-3 font-semibold text-sm text-emerald-950">
+                    <a href="{{ route('home') }}" class="p-2.5 rounded-xl transition {{ request()->routeIs('home') ? 'bg-emerald-50 text-emerald-800 font-bold' : 'hover:bg-slate-50' }}">Beranda</a>
+                    <a href="{{ route('profil') }}" class="p-2.5 rounded-xl transition {{ request()->routeIs('profil') ? 'bg-emerald-50 text-emerald-800 font-bold' : 'hover:bg-slate-50' }}">Profil Ma'had</a>
+                    <a href="{{ route('pendidikan') }}" class="p-2.5 rounded-xl transition {{ request()->routeIs('pendidikan') ? 'bg-emerald-50 text-emerald-800 font-bold' : 'hover:bg-slate-50' }}">Madrasah</a>
+                    <a href="{{ route('berita') }}" class="p-2.5 rounded-xl transition {{ request()->routeIs('berita') ? 'bg-emerald-50 text-emerald-800 font-bold' : 'hover:bg-slate-50' }}">Kabar Kegiatan</a>
+                    <a href="{{ route('galeri') }}" class="p-2.5 rounded-xl transition {{ request()->routeIs('galeri') ? 'bg-emerald-50 text-emerald-800 font-bold' : 'hover:bg-slate-50' }}">Galeri Media</a>
+                    <a href="{{ route('kontak') }}" class="p-2.5 rounded-xl transition {{ request()->routeIs('kontak') ? 'bg-emerald-50 text-emerald-800 font-bold' : 'hover:bg-slate-50' }}">Hubungi</a>
+                </nav>
+            </div>
+
+            <!-- Footer Action di Drawer -->
+            @if ($setting->feature_ppdb)
+            <div class="p-4 border-t border-gray-100 bg-slate-50">
+                <a href="{{ route('pendaftaran') }}" class="w-full bg-amber-500 hover:bg-amber-600 text-emerald-950 py-3 rounded-xl font-bold text-xs tracking-wider transition uppercase shadow block text-center border border-amber-400">
+                    <i class="fa-solid fa-graduation-cap mr-1"></i> PPDB Online Resmi
+                </a>
+            </div>
+            @endif
+        </div>
+    </div>
+
     @yield('content')
+
     <footer class="bg-gradient-to-b from-emerald-950 to-[#03140d] text-gray-400 text-xs py-16 px-4 border-t-4 border-amber-500">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
             <div>
@@ -106,6 +143,30 @@
     <a href="https://wa.me/6281234567890" target="_blank" class="fixed bottom-6 right-6 bg-emerald-800 text-amber-300 w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl hover:bg-emerald-700 transition z-50 border border-amber-400">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
+
+    <!-- SCRIPTS JAVASCRIPT UNTUK TOGGLE MENU SELULER (BARU) -->
+    <script>
+        const btnOpen = document.getElementById('btnMobileToggle');
+        const btnClose = document.getElementById('btnMobileClose');
+        const overlayMenu = document.getElementById('mobileMenuOverlay');
+
+        // Fungsi Memunculkan Drawer Menu
+        btnOpen.addEventListener('click', () => {
+            overlayMenu.classList.remove('hidden');
+        });
+
+        // Fungsi Menyembunyikan Drawer Menu via Tombol X
+        btnClose.addEventListener('click', () => {
+            overlayMenu.classList.add('hidden');
+        });
+
+        // Fungsi Menyembunyikan Drawer Menu jika area luar diklik
+        overlayMenu.addEventListener('click', (e) => {
+            if (e.target === overlayMenu) {
+                overlayMenu.classList.add('hidden');
+            }
+        });
+    </script>
 
 </body>
 </html>
