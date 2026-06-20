@@ -7,6 +7,10 @@ use App\Models\Berita;
 use App\Models\ProfilSetting;
 use App\Models\Sarana;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
+use App\Models\Pendaftaran;
+use Illuminate\Support\Facades\Mail;
 
 class PageController extends Controller
 {
@@ -151,9 +155,9 @@ class PageController extends Controller
         return view("themes.{$folderTema}.pendaftaran", compact('setting'));
     }
 
-    public function prosesPendaftaran(Request $request)
+public function prosesPendaftaran(Request $request)
     {
-        // Validasi input data multi-step formulir PPDB
+        // 1. Validasi input data multi-step formulir PPDB
         $request->validate([
             'nama_santri'   => 'required|string|max:255',
             'jenjang'       => 'required|in:MTs,MA,Tahfidz',
@@ -162,14 +166,19 @@ class PageController extends Controller
             'tanggal_lahir' => 'required|date',
             'nama_wali'     => 'required|string|max:255',
             'kontak_wali'   => 'required|string|max:20',
-            'berkas_kk'   => 'required|file|mimes:pdf,jpg,jpeg,png|max:1024', // 1024 KB = 1 MB
-            'berkas_akta' => 'required|file|mimes:pdf,jpg,jpeg,png|max:1024',
+            'email_wali'    => 'required|email|max:255', // Validasi format email orang tua
+            'berkas_kk'     => 'required|file|mimes:pdf,jpg,jpeg,png|max:1024', // Maks 1 MB
+            'berkas_akta'   => 'required|file|mimes:pdf,jpg,jpeg,png|max:1024', // Maks 1 MB
             'ikrar'         => 'required|accepted',
         ], [
-            'berkas_kk.max'   => 'Ukuran berkas KK terlalu besar! Batas maksimal adalah 2 Megabyte.',
-            'berkas_akta.max' => 'Ukuran berkas Akta Kelahiran terlalu besar! Batas maksimal adalah 2 Megabyte.',
+            'berkas_kk.max'   => 'Ukuran berkas KK terlalu besar! Batas maksimal adalah 1 Megabyte.',
+            'berkas_akta.max' => 'Ukuran berkas Akta Kelahiran terlalu besar! Batas maksimal adalah 1 Megabyte.',
             'ikrar.accepted'  => 'Anda wajib mencentang ikrar pertanggungjawaban data untuk melanjutkan.',
         ]);
+
+        // 2. Memulai Kunci Transaksi Database
+        // Tujuannya: Jika gagal kirim email, data tidak akan tersimpan di database secara parsial
+        DB::beginTransaction();
 
         try {
             // Upload berkas lampiran fisik ke folder storage/app/public/berkas
@@ -180,12 +189,12 @@ class PageController extends Controller
             $nomorReg = 'PPDB-' . str_pad(rand(1, 9999), 4, '0', STR_PAD_LEFT);
             
             // Pastikan tidak duplikat di database
-            while (\App\Models\Pendaftaran::where('no_registrasi', $nomorReg)->exists()) {
+            while (Pendaftaran::where('no_registrasi', $nomorReg)->exists()) {
                 $nomorReg = 'PPDB-' . str_pad(rand(1, 9999), 4, '0', STR_PAD_LEFT);
             }
 
             // Simpan data pendaftar baru ke tabel database pendaftarans
-            \App\Models\Pendaftaran::create([
+            $pendaftaran = Pendaftaran::create([
                 'no_registrasi' => $nomorReg,
                 'nama_santri'   => $request->nama_santri,
                 'jenis_kelamin' => $request->jenis_kelamin,
@@ -193,14 +202,52 @@ class PageController extends Controller
                 'jenjang'       => $request->jenjang,
                 'nama_wali'     => $request->nama_wali,
                 'kontak_wali'   => $request->kontak_wali,
+                'email_wali'    => $request->email_wali, // Rekam email ke database
                 'berkas_kk'     => basename($pathKK),
                 'berkas_akta'   => basename($pathAkta),
                 'status'        => 'Review', // Default awal
             ]);
 
+            // Kumpulkan data yang akan dilempar ke template view HTML email
+            $dataEmail = [
+                'no_registrasi' => $nomorReg,
+                'nama_santri'   => $request->nama_santri,
+                'jenjang'       => $request->jenjang,
+                'nama_wali'     => $request->nama_wali,
+                'kontak_wali'   => $request->kontak_wali,
+            ];
+
+            // 3. Eksekusi Kirim Email ke Orang Tua Wali (Menggunakan view bukti_pendaftaran)
+            Mail::send('emails.bukti_pendaftaran', $dataEmail, function ($message) use ($request, $nomorReg) {
+                $message->to($request->email_wali)
+                        ->subject('Bukti Registrasi PPDB - ' . $nomorReg);
+            });
+
+            // 4. Eksekusi Kirim Email Notifikasi ke Admin Pesantren
+            $setting = Setting::first();
+            if ($setting && !empty($setting->admin_email)) {
+                Mail::send('emails.notifikasi_admin', $dataEmail, function ($message) use ($setting, $nomorReg) {
+                    $message->to($setting->admin_email)
+                            ->subject('Pendaftar Baru Masuk: ' . $nomorReg);
+                });
+            }
+
+            // Jika semua proses (upload file, simpan DB, dan kirim 2 email) SUKSES, permanenkan data:
+            DB::commit();
+
             return redirect()->route('pendaftaran')->with('success_ppdb', $nomorReg);
-        } catch (\Exception $e) {
-            return back()->with('error', 'Gagal mengirim formulir pendaftaran: ' . $e->getMessage())->withInput();
+
+        } catch (Exception $e) {
+            // Jika terjadi error di tengah jalan (misalnya koneksi SMTP Email terputus), 
+            // batalkan penyimpanan database (RollBack)
+            DB::rollBack();
+            
+            // Hapus juga file fisik yang sudah terlanjur terupload
+            if (isset($pathKK)) Storage::disk('public')->delete($pathKK);
+            if (isset($pathAkta)) Storage::disk('public')->delete($pathAkta);
+
+            // Lempar error ke halaman frontend (beserta isi error aslinya agar mudah dilacak)
+            return back()->with('error', 'Koneksi ke server gagal atau email tidak valid. Transaksi dibatalkan secara aman. (' . $e->getMessage() . ')')->withInput();
         }
     }
 

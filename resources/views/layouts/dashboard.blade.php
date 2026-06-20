@@ -66,6 +66,13 @@
                 <a href="{{ route('dashboard.faq.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl transition border {{ request()->routeIs('dashboard.faq.index') ? 'bg-indigo-50 text-indigo-950 border-indigo-100' : 'hover:bg-slate-50 text-slate-700 border-transparent' }}">
                     <i class="fa-regular fa-comments text-sm {{ request()->routeIs('dashboard.faq.index') ? 'text-indigo-600' : 'text-slate-400' }}"></i> Kelola Istifham (FAQ)
                 </a>
+                <li class="mt-4 mb-2 px-6 text-[10px] font-bold uppercase tracking-widest text-slate-400">Pengaturan Sistem</li>
+                <li>
+                    <a href="{{ route('dashboard.settings.email') }}" class="flex items-center gap-3 px-6 py-3 text-sm font-medium transition-colors hover:bg-slate-50 hover:text-indigo-600 {{ request()->routeIs('dashboard.settings.email') ? 'bg-indigo-50 text-indigo-700 border-r-4 border-indigo-600' : 'text-slate-600' }}">
+                        <i class="fa-solid fa-envelope w-5 text-center"></i>
+                        Konfigurasi Email Notifikasi
+                    </a>
+                </li>
                 <!-- MENU KHUSUS KONFIGURASI SUPERADMIN -->
                 <span class="px-3 text-[10px] text-indigo-600 uppercase tracking-widest block pt-6 mb-2 border-t border-slate-100 mt-4">Pusat Superadmin</span>
                 <a href="{{ route('dashboard.pengaturan.index') }}" class="flex items-center gap-3 hover:bg-slate-50 text-slate-700 px-3 py-2.5 rounded-xl transition">

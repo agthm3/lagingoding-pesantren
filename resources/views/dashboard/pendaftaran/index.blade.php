@@ -149,8 +149,7 @@
 
     </main>
 
-    <!-- Injeksi SweetAlert2 Resmi -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         // ALERT SUCCESS FLASH INTERAKSI BACKEND
@@ -169,7 +168,7 @@
             Swal.fire({
                 icon: 'error',
                 title: 'Gagal Mengeksekusi!',
-                text: '{{ session('error') }}',
+                text: '{!! session('error') !!}',
                 confirmButtonColor: '#e11d48',
                 customClass: { popup: 'rounded-2xl' }
             });
@@ -195,6 +194,22 @@
                 customClass: { popup: 'rounded-2xl' }
             }).then((result) => {
                 if (result.isConfirmed) {
+                    
+                    // ==========================================
+                    // MUNCULKAN LOADING SAAT KIRIM EMAIL
+                    // ==========================================
+                    Swal.fire({
+                        title: 'Memproses Status',
+                        html: 'Sistem sedang mengamankan data dan mengirimkan notifikasi email ke wali santri. Mohon tunggu sejenak...',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        didOpen: () => {
+                            Swal.showLoading();
+                        },
+                        customClass: { popup: 'rounded-2xl' }
+                    });
+
+                    // Eksekusi submit form setelah loading muncul
                     if (targetStatus === 'Lolos') {
                         document.getElementById('status-lolos-' + id).submit();
                     } else {

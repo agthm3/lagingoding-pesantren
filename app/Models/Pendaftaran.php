@@ -11,6 +11,6 @@ class Pendaftaran extends Model
 
     protected $fillable = [
         'no_registrasi', 'nama_santri', 'jenis_kelamin', 'asal_daerah',
-        'jenjang', 'nama_wali', 'kontak_wali', 'berkas_kk', 'berkas_akta', 'status'
+        'jenjang', 'nama_wali', 'kontak_wali', 'berkas_kk', 'berkas_akta', 'status','email_wali',
     ];
 }

@@ -82,6 +82,11 @@
                             <input type="tel" id="input_kontak_wali" name="kontak_wali" value="{{ old('kontak_wali') }}" placeholder="Contoh: 08123456xxxx" class="w-full text-xs border border-emerald-900/10 rounded-xl p-3 bg-[#fcfbf7] focus:outline-none focus:border-amber-500 focus:bg-white shadow-inner transition text-slate-800 font-medium">
                             <span class="text-[10px] text-gray-400 font-light block mt-1">Gunakan nomor aktif untuk pemantauan verifikasi panitia.</span>
                         </div>
+                        <div class="sm:col-span-2 mt-4">
+                            <label class="block text-xs font-semibold text-gray-700 mb-1.5">Alamat Email Wali (Aktif) *</label>
+                            <input type="email" id="email_wali" name="email_wali" value="{{ old('email_wali') }}" placeholder="Contoh: wali@email.com" class="w-full text-xs border border-gray-200 rounded-lg p-3 bg-gray-50 focus:outline-none focus:border-emerald-600 focus:bg-white transition font-medium text-slate-800">
+                            <span class="text-[10px] text-gray-400 block mt-1">Sistem akan mengirimkan bukti registrasi dan pengumuman seleksi ke email ini.</span>
+                        </div>
                     </div>
                 </div>
 
@@ -129,13 +134,13 @@
         </div>
     </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         let currentIslamicStep = 1;
-        const MAX_FILE_SIZE = 1 * 1024 * 1024; // Konversi 1 Megabyte ke Bytes
+        const MAX_FILE_SIZE = 1 * 1024 * 1024; // 1 MB (Bytes)
 
-        // Realtime checking saat user memilih berkas untuk feedback instan
+        // Realtime checking saat user memilih berkas
         document.getElementById('input_berkas_kk').addEventListener('change', function() {
             const errSpan = document.getElementById('error_kk');
             if (this.files[0] && this.files[0].size > MAX_FILE_SIZE) {
@@ -162,8 +167,16 @@
                         return;
                     }
                 } else if (currentIslamicStep === 2) {
-                    if (!document.getElementById('input_nama_wali').value || !document.getElementById('input_kontak_wali').value) {
-                        Swal.fire({ icon: 'warning', title: 'Data Belum Lengkap', text: 'Harap lengkapi informasi penanggung jawab/wali santri.', confirmButtonColor: '#064e3b', customClass: { popup: 'rounded-2xl' } });
+                    const emailInput = document.getElementById('email_wali').value;
+                    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                    if (!document.getElementById('input_nama_wali').value || !document.getElementById('input_kontak_wali').value || !emailInput) {
+                        Swal.fire({ icon: 'warning', title: 'Data Belum Lengkap', text: 'Harap lengkapi nama wali, nomor WhatsApp, dan Alamat Email Aktif.', confirmButtonColor: '#064e3b', customClass: { popup: 'rounded-2xl' } });
+                        return;
+                    }
+                    
+                    if (!emailPattern.test(emailInput)) {
+                        Swal.fire({ icon: 'error', title: 'Format Email Salah', text: 'Pastikan email ditulis dengan benar (contoh: ayah@email.com).', confirmButtonColor: '#e11d48', customClass: { popup: 'rounded-2xl' } });
                         return;
                     }
                 } else if (currentIslamicStep === 3) {
@@ -175,14 +188,14 @@
                         return;
                     }
 
-                    // VALIDASI UKURAN FILE FRONTEND (MAKS 1MB) SEBELUM POST FORM
+                    // BLOKIR UKURAN FILE SISI KLIEN SEBELUM SUBMIT
                     if (berkasKK.files[0].size > MAX_FILE_SIZE) {
-                        Swal.fire({ icon: 'error', title: 'Berkas KK Terlalu Besar', text: 'Ukuran file Kartu Keluarga Anda melebihi batas 1 Megabyte. Harap kompres terlebih dahulu.', confirmButtonColor: '#e11d48', customClass: { popup: 'rounded-2xl' } });
+                        Swal.fire({ icon: 'error', title: 'Berkas KK Ditolak', text: 'Ukuran file Kartu Keluarga Anda melebihi batas 1 Megabyte. Transaksi dibatalkan. Harap kompres file terlebih dahulu.', confirmButtonColor: '#e11d48', customClass: { popup: 'rounded-2xl' } });
                         return;
                     }
 
                     if (berkasAkta.files[0].size > MAX_FILE_SIZE) {
-                        Swal.fire({ icon: 'error', title: 'Berkas Akta Terlalu Besar', text: 'Ukuran file Akta Kelahiran Anda melebihi batas 1 Megabyte. Harap kompres terlebih dahulu.', confirmButtonColor: '#e11d48', customClass: { popup: 'rounded-2xl' } });
+                        Swal.fire({ icon: 'error', title: 'Berkas Akta Ditolak', text: 'Ukuran file Akta Kelahiran Anda melebihi batas 1 Megabyte. Transaksi dibatalkan. Harap kompres file terlebih dahulu.', confirmButtonColor: '#e11d48', customClass: { popup: 'rounded-2xl' } });
                         return;
                     }
 
@@ -191,16 +204,12 @@
                         return;
                     }
                     
-                    // POP-UP LOADING PROSES SAAT KIRIM DATA
                     Swal.fire({
                         title: 'Memproses Pendaftaran',
-                        html: 'Mohon tunggu sejenak, data dan berkas lampiran sedang diunggah ke sistem...',
+                        html: 'Data sedang diunggah dan dikirim ke email Anda. Mohon tunggu...',
                         allowOutsideClick: false,
                         allowEscapeKey: false,
-                        allowEnterKey: false,
-                        didOpen: () => {
-                            Swal.showLoading();
-                        },
+                        didOpen: () => { Swal.showLoading(); },
                         customClass: { popup: 'rounded-2xl' }
                     });
 
@@ -219,7 +228,7 @@
             
             document.getElementById(`formSection${currentIslamicStep}`).classList.remove('hidden');
 
-            // Sinkronisasi Desain Indikator Bar Atas
+            // Sinkronisasi Desain Indikator
             for (let i = 1; i <= 3; i++) {
                 const num = document.getElementById(`stepNum${i}`);
                 if (i <= currentIslamicStep) {
@@ -229,7 +238,7 @@
                 }
             }
 
-            // Kontrol tombol aksi bawah (Kembali / Ajukan)
+            // Kontrol tombol aksi bawah
             const btnBack = document.getElementById('btnBack');
             const btnNext = document.getElementById('btnNext');
 
@@ -248,23 +257,26 @@
             }
         }
 
-        // POP-UP NOTIFIKASI BERHASIL
+        // POP-UP NOTIFIKASI BERHASIL (Satu buah gabungan)
         @if(session('success_ppdb'))
             Swal.fire({
                 icon: 'success',
                 title: 'Pendaftaran Berhasil!',
-                html: `<p class="text-sm text-gray-600 leading-relaxed">Formulir ajuan santri baru berhasil terekam ke database sekretariat pesantren.<br><br>Nomor Kode Registrasi Anda:<br><span class="text-lg font-mono font-bold text-emerald-700 bg-emerald-50 px-4 py-2 rounded-xl block mt-2 border border-emerald-100">{{ session('success_ppdb') }}</span><br>Harap simpan kode di atas untuk bukti verifikasi fisik kelolosan berkas.</p>`,
+                html: `<p class="text-sm text-gray-600 leading-relaxed">Formulir ajuan santri baru berhasil terekam ke database sekretariat pesantren.</p>
+                       <p class="mt-2 text-sm text-gray-600">Nomor Registrasi Anda:</p>
+                       <span class="text-lg font-mono font-bold text-emerald-700 bg-emerald-50 px-4 py-2 rounded-xl block mt-2 mb-3 border border-emerald-100">{{ session('success_ppdb') }}</span>
+                       <p class="text-sm text-amber-600 font-bold bg-amber-50 p-2 rounded-lg">PENTING: Silakan cek Kotak Masuk atau folder Spam di email Anda untuk melihat bukti pendaftaran resmi.</p>`,
                 confirmButtonColor: '#10b981',
-                confirmButtonText: 'Selesai',
+                confirmButtonText: 'Tutup',
                 customClass: { popup: 'rounded-2xl' }
             });
         @endif
 
-        // NOTIFIKASI ERROR SYSTEM / VALIDASI BACKEND LARAVEL
+        // NOTIFIKASI ERROR SYSTEM (Termasuk kegagalan pengiriman email/rollBack)
         @if(session('error') || $errors->any())
             Swal.fire({
                 icon: 'error',
-                title: 'Gagal Memproses Data!',
+                title: 'Transaksi Gagal!',
                 text: '{{ session("error") ?: $errors->first() }}',
                 confirmButtonColor: '#e11d48',
                 customClass: { popup: 'rounded-2xl' }

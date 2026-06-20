@@ -97,4 +97,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Rute untuk Pengaturan Email Admin
+Route::get('/dashboard/settings/email', [\App\Http\Controllers\SettingController::class, 'email'])->name('dashboard.settings.email');
+Route::post('/dashboard/settings/email', [\App\Http\Controllers\SettingController::class, 'updateEmail'])->name('dashboard.settings.email.update');
+
 require __DIR__.'/auth.php';
